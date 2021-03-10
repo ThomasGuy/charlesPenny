@@ -1,0 +1,6 @@
+[build]
+  functions = "functions/"
+  publish = "gatsby-front/public"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"

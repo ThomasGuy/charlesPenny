@@ -1,0 +1,63 @@
+{
+  "name": "gatsby-front",
+  "version": "1.0.0",
+  "private": true,
+  "description": "gatsby-front",
+  "author": "Thomasguy",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "build": "NODE_OPTIONS=\"-r esm\" gatsby build",
+    "develop": "NODE_OPTIONS=\"-r esm\" gatsby develop",
+    "start": "npm run develop",
+    "serve": "NODE_OPTIONS=\"-r esm\" gatsby serve",
+    "clean": "gatsby clean",
+    "netlify": "netlify dev",
+    "prebuild": "netlify-lambda install"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
+    "dotenv": "^8.2.0",
+    "gatsby": "^3.0.4",
+    "gatsby-plugin-image": "^1.0.0",
+    "gatsby-plugin-manifest": "^3.0.0",
+    "gatsby-plugin-react-helmet": "^4.0.0",
+    "gatsby-plugin-sanity-image": "^0.6.0-beta.1",
+    "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-plugin-sitemap": "^3.0.0",
+    "gatsby-plugin-styled-components": "^4.0.0",
+    "gatsby-plugin-typography": "^3.0.0",
+    "gatsby-source-filesystem": "^3.0.0",
+    "gatsby-source-sanity": "^6.0.5",
+    "gatsby-transformer-remark": "^3.0.0",
+    "gatsby-transformer-sharp": "^3.0.0",
+    "netlify-cli": "^3.10.7",
+    "netlify-lambda": "^2.0.3",
+    "netlify-plugin-gatsby-cache": "^0.3.2",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.2.1",
+    "typography": "^0.16.19",
+    "typography-theme-kirkham": "^0.16.19"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "esm": "^3.2.25",
+    "prettier": "^2.2.1"
+  }
+}
