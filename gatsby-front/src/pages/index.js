@@ -1,9 +1,10 @@
 import React from 'react';
+import Page from '../styles/page';
 
-const IndexPage = () => (
-  <div>
-    <p>Home page</p>
-  </div>
+const Home = () => (
+  <Page>
+    <h1>Home page</h1>
+  </Page>
 );
 
-export default IndexPage;
+export default Home;
