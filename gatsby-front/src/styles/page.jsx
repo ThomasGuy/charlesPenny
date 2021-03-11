@@ -5,7 +5,7 @@ const Page = styled.div`
   h1,
   h2 {
     text-align: center;
-    color: var(--offWhite);
+    color: var(--title);
   }
 `;
 

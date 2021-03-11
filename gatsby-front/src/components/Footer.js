@@ -7,7 +7,7 @@ const FootStyle = styled.footer`
   text-align: center;
 
   & > a {
-    color: #cccdce;
+    color: var(--title);
     text-decoration: none;
   }
 `;

@@ -39,6 +39,7 @@ const Box = styled.div`
   img {
     border: 25px solid var(--offWhite);
     margin-bottom: 0;
+    box-shadow: var(--bs);
   }
 `;
 

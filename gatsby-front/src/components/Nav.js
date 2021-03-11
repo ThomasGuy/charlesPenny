@@ -36,9 +36,11 @@ const NavStyle = styled.ul`
     box-shadow: var(--bs);
   }
 
-  a {
+  a,
+  p {
     font-size: 1.8rem;
     color: #ededed;
+    opacity: 0.85;
     line-height: 2;
   }
 `;

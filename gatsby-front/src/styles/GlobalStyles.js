@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --bg: #914e21ff;
     --bg_link: #92570b;
+    --title: #533a03
   }
   html {
     box-sizing: border-box;
