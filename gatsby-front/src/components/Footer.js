@@ -8,7 +8,6 @@ const FootStyle = styled.footer`
 
   & > :link {
     color: var(--title);
-    text-decoration: none;
   }
 `;
 
