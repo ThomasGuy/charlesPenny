@@ -34,10 +34,16 @@ const NavStyle = styled.ul`
     padding: 0 5px;
     border-radius: 0 0 20px 20px;
     box-shadow: var(--bs);
+
+    & :hover {
+      background-color: var(--link_hover);
+      a {
+        color: var(--yellow);
+      }
+    }
   }
 
-  a,
-  p {
+  a {
     font-size: 1.8rem;
     color: #ededed;
     opacity: 0.85;
@@ -68,9 +74,7 @@ const Nav = () => {
         </li>
         {category.nodes.map(cat => (
           <li key={cat._id}>
-            <Link to={`/category/${cat.slug.current}`}>
-              <p>{cat.name}</p>
-            </Link>
+            <Link to={`/category/${cat.slug.current}`}>{cat.name}</Link>
           </li>
         ))}
         <li>

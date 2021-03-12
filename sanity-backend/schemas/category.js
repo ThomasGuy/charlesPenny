@@ -13,13 +13,14 @@ export default {
       name: 'name',
       title: 'Catagory',
       type: 'string',
-      description: 'An picture category',
+      description: 'Enter the Category Title',
       validation: Rule => Rule.required(),
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Enter Category title above then click Generate',
       options: {
         source: doc => `${slugify(doc.name)}`,
       },

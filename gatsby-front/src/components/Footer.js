@@ -6,7 +6,7 @@ const FootStyle = styled.footer`
   font-size: 1.6rem;
   text-align: center;
 
-  & > a {
+  & > :link {
     color: var(--title);
     text-decoration: none;
   }

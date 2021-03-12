@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
     --bg: #914e21ff;
     --bg_link: #92570b;
     --title: #533a03
+    --link_hover: rgb(90, 64, 29);
   }
   html {
     box-sizing: border-box;

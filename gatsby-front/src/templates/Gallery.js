@@ -30,15 +30,14 @@ const Box = styled.div`
   width: 100%;
   height: auto;
   p {
-    margin: 0;
     text-align: center;
     color: var(--offWhite);
     opacity: 0.8;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin: 0.6rem 0;
   }
   img {
     border: 25px solid var(--offWhite);
-    margin-bottom: 0;
     box-shadow: var(--bs);
   }
 `;

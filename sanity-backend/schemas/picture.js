@@ -18,6 +18,7 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'reference',
+      description: 'Choose a Category from the dropdown menu',
       to: [{ type: 'category' }],
       validation: Rule => Rule.required(),
     },
@@ -25,21 +26,11 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Enter the Picture Title above then click Generate',
       options: {
         source: 'name',
       },
       validation: Rule => Rule.required(),
-      // options: {
-      //   source: async doc => {
-      //     if (!doc.catagory) {
-      //       return doc.title;
-      //     }
-      //     const category = await client.getDocument(doc.category._ref);
-      //     // const name = await client.getDocument(doc.name._ref);
-      //     return `${category.name}-by-${doc.name}`;
-      //   },
-      //   maxLength: 150,
-      // },
     },
     {
       name: 'image',

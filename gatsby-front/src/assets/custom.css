@@ -1,0 +1,18 @@
+:root {
+  --red: #ff4949;
+  --black: #2e2e2e;
+  --yellow: #ffc600;
+  --white: #fff;
+  --offWhite: #edededee;
+  --grey: #efefef;
+  --maxWidth: 1280px;
+  --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+  --bg: #914e21ff;
+  --bg_link: #92570b;
+  --title: #533a03;
+  --link_hover: rgb(90, 64, 29);
+}
+
+.page {
+  color: rgb(143, 89, 18);
+}
