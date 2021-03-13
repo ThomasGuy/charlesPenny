@@ -24,10 +24,6 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
-    },
-    {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "utils/dashboardConfig.js"
     }
   ]
 }
