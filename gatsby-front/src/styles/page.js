@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Page = styled.div`
+export const Page = styled.div`
   margin-top: 8rem;
   h1,
   h2,
@@ -12,5 +12,3 @@ const Page = styled.div`
     text-align: center;
   }
 `;
-
-export default Page;

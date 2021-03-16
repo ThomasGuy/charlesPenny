@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
     --black: #2E2E2E;
     --yellow: #ffc600;
     --white: #fff;
-    --offWhite: #edededee;
+    --offWhite: #ededed;
     --grey: #efefef;
     --maxWidth: 1280px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
@@ -14,6 +14,11 @@ const GlobalStyles = createGlobalStyle`
     --bg_link: #92570b;
     --title: #442502;
     --link_hover: rgba(134, 80, 9, 0.2);
+    --nav-size: 60px;
+    --border: 1px solid #474a4d;
+    --sm: 479;
+    --border-radius: 8px;
+    --speed: 500ms;
   }
   html {
     box-sizing: border-box;
@@ -30,9 +35,15 @@ const GlobalStyles = createGlobalStyle`
     background-color: #914e21dd;
   }
 
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   a {
     text-decoration: none;
+    color: var(--offWhite);
   }
 `;
-
-export default GlobalStyles;

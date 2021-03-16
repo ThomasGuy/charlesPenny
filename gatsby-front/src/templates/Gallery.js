@@ -9,16 +9,17 @@ const GalleryLayout = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 8rem;
+  margin-top: 10rem;
 
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 476px) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 668px) {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
+    margin-top: 16rem;
   }
 
   @media screen and (min-width: 992px) {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Footer from './Footer';
 import Nav from './Nav';
-import GlobalStyles from '../styles/GlobalStyles';
+import { GlobalStyles } from '../styles';
 
 const ContentStyles = styled.div`
   background-color: var(--bg);
@@ -16,7 +16,7 @@ const ContentStyles = styled.div`
 `;
 
 const Inner = styled.div`
-  padding: 2rem;
+  padding: 0 2rem;
 `;
 
 const Layout = ({ children }) => (

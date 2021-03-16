@@ -33,6 +33,7 @@ export default {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-typography`,
       options: {
