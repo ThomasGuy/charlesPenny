@@ -6,8 +6,8 @@ import MediaQuery from 'react-responsive';
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
 import { NavSmall, NavItem, NavLink } from './NavSmall';
-import useDetectOutsideClick from '../hooks/useDetectOutsideClick';
 import NavCollapse from '../hooks/NavCollapse';
+import useOnClickOutside from '../hooks/useOnClickOutside';
 
 const Fixed = styled.div`
   position: fixed;
@@ -66,9 +66,9 @@ const SmallBanner = styled.h2`
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
-  const linkref = useRef(open);
   const dropdownRef = useRef(null);
-  const [, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+  const linkref = useRef(open);
+  useOnClickOutside(dropdownRef, () => setOpen(false));
 
   const { category } = useStaticQuery(graphql`
     query {
