@@ -63,5 +63,8 @@ typings/
 # gatsby files
 .cache/
 public
+.env
 .vscode
+
+# sanity files
 dist
