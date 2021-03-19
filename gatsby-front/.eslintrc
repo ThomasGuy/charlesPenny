@@ -1,6 +1,7 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "prettier/prettier": "error",
     "array-callback-return": 0,
     "react/prop-types": 0,
     "react/jsx-props-no-spreading": 0,

@@ -20,12 +20,15 @@ export const NavStyle = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
 `;
 
 export const StyledLink = styled(Link)`
   min-width: 120px;
   background: var(--bg_link);
-  border-radius: 0 0 20px 20px;
+  /* border-radius: 0 0 20px 20px; */
+  /* border: 1px solid var(--title); */
+  border-top: none;
   box-shadow: var(--bs);
   color: var(--offWhite);
   line-height: 2;
@@ -33,7 +36,7 @@ export const StyledLink = styled(Link)`
 
   & :hover {
     background-color: var(--link_hover);
-    color: var(--yellow);
+    /* color: var(--yellow); */
   }
 `;
 
@@ -44,8 +47,8 @@ export const Banner = styled.h1`
   text-align: center;
   margin: 0;
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgb(41, 39, 39);
-  box-shadow: 0 5px 5px 1px rgb(41, 39, 39, 0.95);
-  background-color: var(--black);
+  /* margin-bottom: 1rem; */
+  /* border-bottom: 1px solid rgb(41, 39, 39); */
+  /* box-shadow: 0 5px 5px 1px rgb(41, 39, 39, 0.95); */
+  background-color: var(--bg_link);
 `;

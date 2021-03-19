@@ -27,19 +27,18 @@ export default {
       },
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-image',
     'gatsby-transformer-remark',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/assets/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/assets/typography`,
+    //   },
+    // },
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {

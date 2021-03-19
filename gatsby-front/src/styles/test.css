@@ -1,0 +1,10 @@
+.trial {
+  color: #d42c16c9;
+}
+
+:root {
+  --bg: #5e0202d0;
+  --bg_link: #a80505ce;
+  --title: #442502;
+  --link_hover: #hsla(0, 96%, 19%, 0.816);
+}

@@ -9,17 +9,17 @@ const GalleryLayout = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 10rem;
+  margin-top: 12rem;
+  gap: 1.5rem;
 
   @media screen and (min-width: 476px) {
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    gap: 2rem;
   }
 
   @media screen and (min-width: 668px) {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
-    margin-top: 16rem;
+    margin-top: 18rem;
   }
 
   @media screen and (min-width: 992px) {
@@ -30,6 +30,11 @@ const GalleryLayout = styled.div`
 const Box = styled.div`
   width: 100%;
   height: auto;
+  /* margin-top: 3rem; */
+  img {
+    width: 100%;
+    border: 25px solid var(--offWhite);
+  }
   p {
     text-align: center;
     color: var(--offWhite);
@@ -37,10 +42,6 @@ const Box = styled.div`
     font-size: 1.7rem;
     margin: 0 0 2.5rem 0;
     padding-bottom: 1rem;
-  }
-  img {
-    border: 25px solid var(--offWhite);
-    box-shadow: var(--bs);
   }
 `;
 
