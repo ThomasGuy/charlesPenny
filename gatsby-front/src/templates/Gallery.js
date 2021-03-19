@@ -35,7 +35,8 @@ const Box = styled.div`
     color: var(--offWhite);
     opacity: 0.8;
     font-size: 1.7rem;
-    margin: 0.6rem 0;
+    margin: 0 0 2.5rem 0;
+    padding-bottom: 1rem;
   }
   img {
     border: 25px solid var(--offWhite);

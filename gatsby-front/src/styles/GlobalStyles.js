@@ -4,6 +4,8 @@ export const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 10px;
+    margin: 0;
+    padding: 0;
   }
 
   *, *:before, *:after {
