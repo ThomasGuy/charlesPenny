@@ -44,8 +44,14 @@ export const NavbarNavItem = styled.li`
   }
 
   svg {
-    fill: var(--offWhite) !important;
+    fill: var(--offWhite);
     width: 25px;
     height: 25px;
   }
+`;
+
+export const SmallBanner = styled.h2`
+  color: var(--offWhite);
+  font-size: 2.4rem;
+  margin: 0 auto 0 2rem;
 `;

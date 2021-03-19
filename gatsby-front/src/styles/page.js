@@ -11,4 +11,8 @@ export const Page = styled.div`
     color: var(--title);
     text-align: center;
   }
+
+  @media screen and (min-width: 668px) {
+    margin-top: 18rem;
+  }
 `;

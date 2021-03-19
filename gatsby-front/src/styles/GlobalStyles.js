@@ -1,7 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  :root {
+  html {
+    box-sizing: border-box;
+    font-size: 10px;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
     --red: #FF4949;
     --black: #2E2E2E;
     --yellow: #ffc600;
@@ -19,17 +28,6 @@ export const GlobalStyles = createGlobalStyle`
     --sm: 479;
     --border-radius: 8px;
     --speed: 500ms;
-  }
-  html {
-    box-sizing: border-box;
-    font-size: 10px;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  body {
     font-size: 2rem;
     min-height: 100vh;
     background-color: #914e21dd;
