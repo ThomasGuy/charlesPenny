@@ -7,7 +7,7 @@ import Nav from './Nav';
 import { GlobalStyles } from '../styles';
 
 const ContentStyles = styled.div`
-  background-color: var(--bg);
+  background-color: var(--charles);
   max-width: var(--maxWidth);
   display: flex;
   flex-direction: column;

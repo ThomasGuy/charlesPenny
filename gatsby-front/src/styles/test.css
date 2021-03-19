@@ -1,10 +1,11 @@
 .trial {
-  color: #d42c16c9;
+  color: hsla(7, 91%, 26%, 0.788);
 }
 
 :root {
-  --bg: #5e0202d0;
+  --bg: #cc3825ec;
+  --charles: #d42c16c4;
   --bg_link: #a80505ce;
   --title: #442502;
-  --link_hover: #hsla(0, 96%, 19%, 0.816);
+  --link_hover: #c42510d5;
 }

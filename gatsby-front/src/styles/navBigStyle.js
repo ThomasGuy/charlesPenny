@@ -7,7 +7,6 @@ export const Fixed = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--bg);
   max-width: var(--maxWidth);
   margin: 0 auto;
 `;
@@ -25,10 +24,8 @@ export const NavStyle = styled.div`
 
 export const StyledLink = styled(Link)`
   min-width: 120px;
-  background: var(--bg_link);
+  background: var(--link_bg);
   /* border-radius: 0 0 20px 20px; */
-  /* border: 1px solid var(--title); */
-  border-top: none;
   box-shadow: var(--bs);
   color: var(--offWhite);
   line-height: 2;
@@ -36,7 +33,6 @@ export const StyledLink = styled(Link)`
 
   & :hover {
     background-color: var(--link_hover);
-    /* color: var(--yellow); */
   }
 `;
 
@@ -50,5 +46,5 @@ export const Banner = styled.h1`
   /* margin-bottom: 1rem; */
   /* border-bottom: 1px solid rgb(41, 39, 39); */
   /* box-shadow: 0 5px 5px 1px rgb(41, 39, 39, 0.95); */
-  background-color: var(--bg_link);
+  background-color: var(--link_bg);
 `;
