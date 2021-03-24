@@ -41,6 +41,12 @@ export default {
       },
       validation: Rule => Rule.required(),
     },
+    {
+      name: 'dimensions',
+      title: 'Image dimensions',
+      type: 'dimensions',
+      description: 'add picture dimensions',
+    },
   ],
   preview: {
     select: {

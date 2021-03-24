@@ -62,9 +62,10 @@ typings/
 
 # gatsby files
 .cache/
-public
+public/
 .env
-.vscode
+test.css
 
 # sanity files
-dist
+dist/
+public/

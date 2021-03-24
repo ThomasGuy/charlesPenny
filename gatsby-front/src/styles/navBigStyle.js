@@ -34,6 +34,10 @@ export const StyledLink = styled(Link)`
   & :hover {
     background-color: var(--link_hover);
   }
+
+  .active {
+    background: var(--link_hover);
+  }
 `;
 
 export const Banner = styled.h1`

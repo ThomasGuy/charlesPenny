@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-shadow */
+
 import { graphql } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import React from 'react';
@@ -67,6 +67,7 @@ export const pageQuery = graphql`
   query GalleryPageQuery($slug: String!) {
     allSanityPicture(
       filter: { category: { slug: { current: { eq: $slug } } } }
+      sort: { fields: image___asset___fluid___aspectRatio, order: DESC }
     ) {
       edges {
         node {

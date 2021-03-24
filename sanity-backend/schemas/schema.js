@@ -6,6 +6,11 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 import picture from './picture';
 import category from './category';
+import home from './home';
+import dates from './dates';
+import event from './event';
+import address from './address';
+import dimensions from './dimensions';
 
 export default createSchema({
   // We name our schema
@@ -13,5 +18,13 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([picture, category]),
+  types: schemaTypes.concat([
+    picture,
+    category,
+    home,
+    dates,
+    event,
+    address,
+    dimensions,
+  ]),
 });

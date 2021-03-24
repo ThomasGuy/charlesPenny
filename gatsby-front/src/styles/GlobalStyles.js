@@ -22,8 +22,9 @@ export const GlobalStyles = createGlobalStyle`
     }
     --bg: #cc3925c9;
     --charles: #d42d16ec;
-    --link_bg: #7f0202;
     --title: #442502;
+
+    --link_bg: #7f0202;
     --link_hover: #c42510d5;
 
     --red: #FF4949;

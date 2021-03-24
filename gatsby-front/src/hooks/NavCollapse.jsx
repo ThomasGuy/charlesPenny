@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
@@ -37,26 +37,66 @@ const MenuItemStyled = styled.div`
   }
 `;
 
-const NavCollape = ({ list, dropref }) => {
-  const categories = list.map(cat => (
-    <MenuItemStyled key={cat._id}>
+const NavCollape = ({ list, dropref, setOpen }) => {
+  const handleClick = useCallback(
+    evt => {
+      if (evt.target.nodeName !== 'A') {
+        return;
+      }
+      setOpen(false);
+    },
+    [setOpen]
+  );
+
+  const handleTouchStart = useCallback(
+    evt => {
+      if (evt.target.nodeName !== 'A') {
+        return;
+      }
+      setOpen(false);
+    },
+    [setOpen]
+  );
+
+  // const handleKey = useCallback(
+  //   evt => {
+  //     if (evt.target.nodeName !== 'A') {
+  //       return;
+  //     }
+  //     // keyCode = 9 "tab"
+  //     if (evt.keyCode === 9) {
+  //       setOpen(state => !state);
+  //     }
+  //   },
+  //   [setOpen]
+  // );
+
+  const categories = list.map((cat, idx) => (
+    <MenuItemStyled key={cat._id} nav-index={idx + 1}>
       <Link to={`/category/${cat.slug.current}`}>{cat.name}</Link>
     </MenuItemStyled>
   ));
 
   return (
-    <DropDown
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div
       ref={dropref}
-      initial={{ opacity: 0, x: '-110%' }}
-      animate={{ opacity: 0.9, x: '5%' }}
-      exit={{ opacity: 0, x: '-110%' }}
-      transition={{ ease: 'easeOut', duration: 0.5 }}
-      key="subject">
-      {categories}
-      <MenuItemStyled key="contact" id="contact">
-        <Link to="/contact">Contact</Link>
-      </MenuItemStyled>
-    </DropDown>
+      onClick={handleClick}
+      onTouchStart={handleTouchStart}
+      role="button"
+      tabIndex={0}>
+      <DropDown
+        initial={{ opacity: 0, x: '-110%' }}
+        animate={{ opacity: 0.9, x: '5%' }}
+        exit={{ opacity: 0, x: '-110%' }}
+        transition={{ ease: 'easeOut', duration: 0.5 }}
+        key="subject">
+        {categories}
+        <MenuItemStyled key="contact" id="contact">
+          <Link to="/contact">Contact</Link>
+        </MenuItemStyled>
+      </DropDown>
+    </div>
   );
 };
 

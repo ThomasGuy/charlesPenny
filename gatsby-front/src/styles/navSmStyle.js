@@ -4,24 +4,38 @@ import styled from 'styled-components';
 export const Navbar = styled.nav`
   height: var(--nav-size);
   background-color: var(--black);
-  padding: 0 0.5rem;
+  /* padding: 0 0.5rem; */
   border-bottom: var(--border);
 `;
 
-export const NavbarNav = styled.ul`
-  max-width: 100%;
+export const NavFixed = styled.div`
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+
+  height: var(--nav-size);
+  background-color: var(--black);
+  border-bottom: var(--border);
+`;
+
+export const NavbarNav = styled.div`
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 1rem;
 `;
 
-export const NavbarNavItem = styled.li`
-  width: calc(var(--nav-size) * 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0;
+export const NavbarNavItem = styled.div`
+  margin: 0;
+
+  &:last-child {
+    margin-right: 1.5rem;
+  }
 
   /* Icon Button */
   .icon-button {

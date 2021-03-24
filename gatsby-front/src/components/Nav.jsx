@@ -41,16 +41,14 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
   );
 
   useEffect(() => {
-    if (linkref && linkref.current) {
-      const bun = linkref.current;
-      bun.addEventListener('click', listener);
-      document.addEventListener('keydown', handleKey); // listen for 'tab' key
+    const bun = linkref.current;
+    bun.addEventListener('click', listener);
+    document.addEventListener('keydown', handleKey); // listen for 'tab' key
 
-      return () => {
-        bun.removeEventListener('click', listener);
-        document.removeEventListener('keydown', handleKey);
-      };
-    }
+    return () => {
+      bun.removeEventListener('click', listener);
+      document.removeEventListener('keydown', handleKey);
+    };
   }, [handleKey, linkref, listener]);
 
   return (
@@ -83,7 +81,8 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const linkref = useRef(open);
-  useOnClickOutside(dropdownRef, () => setOpen(false));
+  const handler = useCallback(() => setOpen(false), [setOpen]);
+  useOnClickOutside(dropdownRef, linkref, handler);
 
   const { category } = useStaticQuery(graphql`
     query {
@@ -104,13 +103,18 @@ const Nav = () => {
       <MediaQuery minWidth={668}>
         <Banner>Charles Penny</Banner>
         <NavStyle>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/" activeClassName="active">
+            Home
+          </StyledLink>
           {category.nodes.map(cat => (
-            <StyledLink to={`/category/${cat.slug.current}`} key={cat._id}>
+            <StyledLink
+              to={`/category/${cat.slug.current}`}
+              key={cat._id}
+              activeClassName="active">
               {cat.name}
             </StyledLink>
           ))}
-          <StyledLink to="/contact" key="contact">
+          <StyledLink to="/contact" key="contact" activeClassName="active">
             Contact
           </StyledLink>
         </NavStyle>
@@ -126,7 +130,11 @@ const Nav = () => {
             key="burger"
             open={open}
             setOpen={setOpen}>
-            <NavCollapse list={category.nodes} dropref={dropdownRef} />
+            <NavCollapse
+              list={category.nodes}
+              dropref={dropdownRef}
+              setOpen={setOpen}
+            />
           </NavItem>
         </NavSmall>
       </MediaQuery>
