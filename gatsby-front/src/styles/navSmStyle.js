@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Navbar = styled.nav`
   height: var(--nav-size);
   background-color: var(--black);
-  /* padding: 0 0.5rem; */
   border-bottom: var(--border);
 `;
 
@@ -65,7 +64,6 @@ export const NavbarNavItem = styled.div`
 `;
 
 export const SmallBanner = styled.h2`
-  color: var(--offWhite);
   font-size: 2.4rem;
   margin: 0 auto 0 2rem;
 `;
