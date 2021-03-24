@@ -49,6 +49,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: var(--black);
     font-size: 1.5rem;
     line-height:2;
+    color: var(--offWhite);
   }
 
   ul {
@@ -63,12 +64,4 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .center { text-align: center; }
-
-  .fixit {
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
 `;

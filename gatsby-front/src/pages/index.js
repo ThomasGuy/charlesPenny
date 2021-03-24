@@ -10,7 +10,7 @@ const EventBox = styled.ul`
   width: 100%;
   height: 30rem;
   margin: 4rem auto;
-  color: var(--offWhite);
+  /* color: var(--offWhite); */
   padding: 0 2rem;
   display: block;
   overflow-y: auto;
@@ -47,11 +47,19 @@ const UpComing = styled.h2`
   background: #640505;
   margin: 0 auto;
   opacity: 0.8;
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Box = styled.li`
   background: #640505;
   padding: 0 1rem;
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 function Event({ evt }) {
@@ -73,7 +81,6 @@ const Home = () => {
   const { home } = useStaticQuery(graphql`
     query {
       home: sanityHome {
-        name
         events {
           name
           address {
@@ -97,18 +104,18 @@ const Home = () => {
     }
   `);
 
-  const { name, events, biography, image } = home;
+  const { events, biography, image } = home;
   const bio = biography.map(para => <p>{para}</p>);
   const latest = events.map(evt => <Event evt={evt} />);
 
   return (
     <Page>
-      <SanityImageBox image={image} name={name} />
+      <SanityImageBox image={image} name="" />
       {bio}
       <EventBox>
         {latest}
         <UpComing>
-          <u>Upcoming Events and Exhibitions</u>
+          <u>Upcoming Events</u>
         </UpComing>
       </EventBox>
     </Page>
