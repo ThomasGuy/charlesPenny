@@ -41,7 +41,7 @@ export const GlobalStyles = createGlobalStyle`
     --maxWidth: 1280px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --nav-size: 60px;
-    --border: 1px solid #474a4d;
+    --border: 2px solid #474a4d;
     --sm: 479;
     --border-radius: 8px;
     --speed: 500ms;
@@ -60,5 +60,15 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--offWhite);
+  }
+
+  .center { text-align: center; }
+
+  .fixit {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 `;
