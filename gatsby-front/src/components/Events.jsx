@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CalendarIcon from '../assets/svg/calendar3.svg';
+import { mediaQueries } from '../styles';
 
 const Container = styled.div`
   background-color: var(--link_bg);
@@ -10,13 +11,14 @@ const Container = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
 
-  @media screen and (max-width: 480px) {
+  ${mediaQueries('sm')`
     font-size: 1.8rem;
-  }
+    height: 35rem;
+  `};
 
-  @media screen and (min-width: 676px) {
+  ${mediaQueries('md')`
     width: 80%;
-  }
+  `};
 `;
 
 const EventList = styled.ul`
@@ -37,15 +39,15 @@ const Title = styled.div`
   display: inline-block;
   background-color: var(--yellow);
   color: var(--black);
-  font-size: 2.2rem;
   font-weight: 900;
   line-height: 2;
   padding: 0 1rem;
   z-index: 1;
+  font-size: 1.4rem;
 
-  @media screen and (max-width: 480px) {
-    font-size: 1.4rem;
-  }
+  ${mediaQueries('sm')`
+    font-size: 2.2rem;
+  `};
 `;
 
 const EventListItem = styled.li`
@@ -53,13 +55,27 @@ const EventListItem = styled.li`
   background: var(--black);
   opacity: 0.9;
   padding: 0 1rem;
-  padding-top: 3rem;
   margin-top: 1rem;
+  font-size: 1.1rem;
+  padding-top: 2rem;
 
-  @media screen and (max-width: 480px) {
-    font-size: 1.2rem;
-    padding-top: 2rem;
+  hr {
+    border: 1px solid #1a1714;
+    margin: 6px 0 2px 0;
   }
+
+  ${mediaQueries('xs')`
+    font-size: 1.4rem;
+  `};
+
+  ${mediaQueries('sm')`
+    padding-top: 3rem;
+    font-size: 1.6rem;
+    `};
+
+  ${mediaQueries('lg')`
+    font-size: 2rem;
+  `};
 `;
 
 export function Event({ evt }) {
@@ -72,6 +88,7 @@ export function Event({ evt }) {
         <CalendarIcon /> &nbsp; {dates.start} &nbsp;&#8209;&nbsp; {dates.finish}
       </h4>
       <p>{about}</p>
+      <hr />
       <p>{`${number} ${road}, ${city}, ${postcode}, ${country}`}</p>
     </EventListItem>
   );

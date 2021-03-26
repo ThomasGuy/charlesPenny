@@ -23,31 +23,24 @@ export const GlobalStyles = createGlobalStyle`
     --bg: #cc3925c9;
     --charles: #d42d16ec;
     --title: #442502;
-
     --link_bg: #7f0202;
     --link_hover: #c42510d5;
-
     --red: #FF4949;
-
     --black: #2E2E2E;
-
     --yellow: #ffc600;
-
     --white: #fff;
-
     --offWhite: #ededed;
-
     --grey: #efefef;
     --maxWidth: 1280px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --nav-size: 60px;
     --border: 2px solid #474a4d;
-    --sm: 479;
     --border-radius: 8px;
     --speed: 500ms;
+
     min-height: 100vh;
     background-color: var(--black);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     line-height:2;
     color: var(--offWhite);
   }

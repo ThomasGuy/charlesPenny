@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import SanityImageBox from '../components/SanityImageBox';
+import { mediaQueries } from '../styles';
 
 const GalleryLayout = styled.div`
   margin: 0 auto;
@@ -11,19 +12,19 @@ const GalleryLayout = styled.div`
   margin-top: 12rem;
   gap: 1.5rem;
 
-  @media screen and (min-width: 476px) {
+  ${mediaQueries('sm')`
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-  }
+  `};
 
-  @media screen and (min-width: 668px) {
+  ${mediaQueries('md')`
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 18rem;
-  }
+  `};
 
-  @media screen and (min-width: 992px) {
+  ${mediaQueries('lg')`
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+  `};
 `;
 
 const Gallery = ({ data }) => {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaQueries } from './mediaQueries';
 
 export const Page = styled.div`
   margin: 0 auto;
@@ -6,7 +7,7 @@ export const Page = styled.div`
   max-width: 100rem;
   padding: 0 0.8rem;
 
-  @media screen and (min-width: 668px) {
+  ${mediaQueries('md')`
     margin-top: 18rem;
-  }
+  `};
 `;

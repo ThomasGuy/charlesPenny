@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
-import { Page } from '../styles';
+import { mediaQueries, Page } from '../styles';
 
 const UpComing = styled.h2`
   width: 90%;
@@ -13,22 +13,32 @@ const UpComing = styled.h2`
   margin: 0 auto;
   margin-top: 4rem;
   opacity: 0.9;
+  font-size: 1.8rem;
 
-  @media screen and (min-width: 676px) {
+  ${mediaQueries('xs')`
+    font-size: 2.3rem;
+  `};
+
+  ${mediaQueries('sm')`
+    font-size: 2.8rem;
+    `};
+
+  ${mediaQueries('md')`
+    font-size: 3.2rem;
     width: 80%;
-  }
+  `};
 `;
 
 const Bio = styled.p`
-  font-size: 2rem;
-  line-height: 1.5;
-  padding: 0 1rem;
   text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 0 0.5rem;
 
-  @media screen and (max-width: 480px) {
-    font-size: 1.5rem;
-    line-height: 1.4;
-    padding: 0 0.5rem;
+  @media screen and (min-width: 480px) {
+    font-size: 2rem;
+    line-height: 1.5;
+    padding: 0 1rem;
   }
 `;
 
