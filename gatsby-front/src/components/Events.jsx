@@ -63,7 +63,7 @@ const EventListItem = styled.li`
 `;
 
 export function Event({ evt }) {
-  const { name, address, dates, about, _key } = evt;
+  const { name, address, dates, about } = evt;
   const { number, road, city, postcode, country } = address;
   return (
     <EventListItem>

@@ -28,7 +28,7 @@ const Bio = styled.p`
   @media screen and (max-width: 480px) {
     font-size: 1.5rem;
     line-height: 1.4;
-    padding: 0;
+    padding: 0 0.5rem;
   }
 `;
 
