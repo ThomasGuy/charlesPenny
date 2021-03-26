@@ -19,7 +19,7 @@ const Inner = styled.div`
   padding: 0 2rem;
 
   @media screen and (max-width: 380px) {
-    padding: 0 0.5rem;
+    padding: 0 0.8rem;
   }
 `;
 

@@ -4,7 +4,7 @@ import CalendarIcon from '../assets/svg/calendar3.svg';
 
 const Container = styled.div`
   background-color: var(--link_bg);
-  width: 100%;
+  width: 90%;
   height: 30rem;
   margin: 0 auto 4rem auto;
   overflow-y: auto;
@@ -66,7 +66,7 @@ export function Event({ evt }) {
   const { name, address, dates, about, _key } = evt;
   const { number, road, city, postcode, country } = address;
   return (
-    <EventListItem key={_key}>
+    <EventListItem>
       <Title>{name}</Title>
       <h4>
         <CalendarIcon /> &nbsp; {dates.start} &nbsp;&#8209;&nbsp; {dates.finish}
@@ -77,10 +77,11 @@ export function Event({ evt }) {
   );
 }
 
-export function Events({ children }) {
+export default function Events({ events }) {
+  const evtList = events.map(evt => <Event evt={evt} key={evt._key} />);
   return (
     <Container>
-      <EventList>{children}</EventList>
+      <EventList>{evtList}</EventList>
     </Container>
   );
 }

@@ -40,7 +40,6 @@ export const StyledLink = styled(Link)`
 
 export const Banner = styled.h1`
   flex: 1;
-  width: 100%;
   text-align: center;
   margin: 0;
   padding: 1.5rem;

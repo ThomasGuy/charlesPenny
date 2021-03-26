@@ -82,7 +82,7 @@ const NavCollape = ({ list, dropref, setOpen }) => {
     <div
       ref={dropref}
       onClick={handleClick}
-      onTouchStart={handleTouchStart}
+      ontouchstart={handleTouchStart}
       role="button"
       tabIndex={0}>
       <DropDown

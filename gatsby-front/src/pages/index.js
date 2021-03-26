@@ -1,11 +1,12 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import { Event, Events } from '../components/Events';
+import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page } from '../styles';
 
 const UpComing = styled.h2`
+  width: 90%;
   text-align: center;
   background: var(--black);
   color: var(--yellow);
@@ -21,10 +22,13 @@ const UpComing = styled.h2`
 const Bio = styled.p`
   font-size: 2rem;
   line-height: 1.5;
+  padding: 0 1rem;
+  text-align: center;
 
   @media screen and (max-width: 480px) {
     font-size: 1.5rem;
     line-height: 1.4;
+    padding: 0;
   }
 `;
 
@@ -57,15 +61,15 @@ const Home = () => {
   `);
 
   const { events, biography, image } = home;
-  const bio = biography.map(para => <Bio>{para}</Bio>);
-  const upComingEvents = events.map(evt => <Event evt={evt} />);
+  const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
+  // const upComingEvents = events.map(evt => <Event evt={evt} />);
 
   return (
     <Page>
       <SanityImageBox image={image} name="" alt="Charles Penny" />
       {bio}
       <UpComing>Exhibitions and Events</UpComing>
-      <Events>{upComingEvents}</Events>
+      <Events events={events} />
     </Page>
   );
 };
