@@ -62,10 +62,8 @@ const Gallery = ({ data }) => {
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
-      console.log(evt.target.nodeName);
       setOpen(true);
       setIndex(parseInt(evt.target.attributes.idx.value));
-      console.log(indexRef.current);
     },
     [setIndex, setOpen]
   );
@@ -76,7 +74,7 @@ const Gallery = ({ data }) => {
         27: () => {
           e.preventDefault();
           setOpen(state => !state);
-          // window.removeEventListener('keyup', handleKeyUp, false);
+          window.removeEventListener('keyup', handleKeyUp, false);
         },
       };
 

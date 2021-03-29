@@ -6,10 +6,6 @@ const Box = styled.div`
   width: 100%;
   height: auto;
 
-  img {
-    width: 100%;
-    border: ${props => (props.show ? `25px solid var(--offWhite)` : `none`)};
-  }
   p {
     text-align: center;
     color: var(--white);
@@ -33,6 +29,7 @@ const SanityImageBox = ({ image, name, show, dimensions = {}, idx }) => (
       alt={name}
       idx={idx}
       loading="eager"
+      imgStyle={show && { border: '25px solid rgb(237, 237, 237)' }}
     />
     <p>
       {name}

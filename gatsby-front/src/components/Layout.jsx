@@ -1,5 +1,5 @@
 import React from 'react';
-import 'normalize.css';
+// import 'normalize.css';
 import styled from 'styled-components';
 
 import Footer from './Footer';
