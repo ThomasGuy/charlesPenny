@@ -33,8 +33,8 @@ export const StyledLink = styled(Link)`
     background-color: var(--link_hover);
   }
 
-  .active {
-    background: var(--link_hover);
+  &.active {
+    background-color: var(--link_hover);
   }
 `;
 

@@ -27,6 +27,7 @@ export const NavbarNav = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  color: var(--offWhite);
 `;
 
 export const NavbarNavItem = styled.div`
@@ -41,7 +42,9 @@ export const NavbarNavItem = styled.div`
     --button-size: calc(var(--nav-size) * 0.6);
     width: var(--button-size);
     height: var(--button-size);
-    background-color: #484a4d;
+    /* background-color: #484a4d; */
+    background-color: var(--black);
+    box-shadow: var(--bs);
     border-radius: 50%;
     padding: 5px;
     margin: 2px;
@@ -53,10 +56,11 @@ export const NavbarNavItem = styled.div`
   }
 
   .icon-button:hover {
-    filter: brightness(1.3);
+    filter: brightness(1.5);
   }
 
   svg {
+    /* fill: var(--yellow); */
     fill: var(--offWhite);
     width: 25px;
     height: 25px;

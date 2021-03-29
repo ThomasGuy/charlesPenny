@@ -14,7 +14,7 @@ import {
   NavbarNav,
   NavbarNavItem,
 } from '../styles';
-import NavCollapse from '../hooks/NavCollapse';
+import NavCollapse from './NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 
 function NavSmall({ children }) {

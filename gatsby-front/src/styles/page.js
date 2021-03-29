@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaQueries } from './mediaQueries';
+import { mediaQuery } from './mediaQuery';
 
 export const Page = styled.div`
   margin: 0 auto;
@@ -7,7 +7,7 @@ export const Page = styled.div`
   max-width: 100rem;
   padding: 0 0.8rem;
 
-  ${mediaQueries('md')`
+  ${mediaQuery('md')`
     margin-top: 18rem;
   `};
 `;

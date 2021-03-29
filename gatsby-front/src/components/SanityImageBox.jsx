@@ -1,5 +1,5 @@
 import React from 'react';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -26,14 +26,19 @@ const Box = styled.div`
   }
 `;
 
-const SanityImageBox = ({ image, name, show, sizes = null }) => (
+const SanityImageBox = ({ image, name, show, dimensions = {}, idx }) => (
   <Box show={show}>
-    <SanityImage {...image} alt={name} />
+    <GatsbyImage
+      image={image.asset.gatsbyImageData}
+      alt={name}
+      idx={idx}
+      loading="eager"
+    />
     <p>
       {name}
       {'  '}
       <span className="dim">
-        {sizes ? `  ${sizes.height}x${sizes.width}cm` : ``}
+        {dimensions ? `  ${dimensions.height}x${dimensions.width}cm` : ``}
       </span>
     </p>
   </Box>

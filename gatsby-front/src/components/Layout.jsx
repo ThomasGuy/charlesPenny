@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import Footer from './Footer';
 import Nav from './Nav';
-import { GlobalStyles, mediaQueries } from '../styles';
+import { mediaQuery } from '../styles/mediaQuery';
+import { GlobalStyles } from '../styles';
 
 const ContentStyles = styled.div`
   background-color: var(--charles);
@@ -18,15 +19,15 @@ const ContentStyles = styled.div`
 const Inner = styled.div`
   padding: 0 0.7rem;
 
-  ${mediaQueries('xs')`
+  ${mediaQuery('xs')`
     padding: 0 1.2rem;
   `};
 
-  ${mediaQueries('sm')`
+  ${mediaQuery('sm')`
     padding: 0 1.6rem;
   `};
 
-  ${mediaQueries('md')`
+  ${mediaQuery('md')`
     padding: 0 2.2rem;
   `};
 `;

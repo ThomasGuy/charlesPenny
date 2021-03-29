@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CalendarIcon from '../assets/svg/calendar3.svg';
-import { mediaQueries } from '../styles';
+import { mediaQuery } from '../styles/mediaQuery';
 
 const Container = styled.div`
   background-color: var(--link_bg);
@@ -11,12 +11,12 @@ const Container = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
 
-  ${mediaQueries('sm')`
+  ${mediaQuery('sm')`
     font-size: 1.8rem;
     height: 35rem;
   `};
 
-  ${mediaQueries('md')`
+  ${mediaQuery('md')`
     width: 80%;
   `};
 `;
@@ -45,7 +45,7 @@ const Title = styled.div`
   z-index: 1;
   font-size: 1.4rem;
 
-  ${mediaQueries('sm')`
+  ${mediaQuery('sm')`
     font-size: 2.2rem;
   `};
 `;
@@ -64,16 +64,16 @@ const EventListItem = styled.li`
     margin: 6px 0 2px 0;
   }
 
-  ${mediaQueries('xs')`
+  ${mediaQuery('xs')`
     font-size: 1.4rem;
   `};
 
-  ${mediaQueries('sm')`
+  ${mediaQuery('sm')`
     padding-top: 3rem;
     font-size: 1.6rem;
     `};
 
-  ${mediaQueries('lg')`
+  ${mediaQuery('lg')`
     font-size: 2rem;
   `};
 `;

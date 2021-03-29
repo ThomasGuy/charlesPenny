@@ -3,7 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
-import { mediaQueries, Page } from '../styles';
+import { Page } from '../styles';
+import { mediaQuery } from '../styles/mediaQuery';
 
 const UpComing = styled.h2`
   width: 90%;
@@ -15,15 +16,15 @@ const UpComing = styled.h2`
   opacity: 0.9;
   font-size: 1.8rem;
 
-  ${mediaQueries('xs')`
+  ${mediaQuery('xs')`
     font-size: 2.3rem;
   `};
 
-  ${mediaQueries('sm')`
+  ${mediaQuery('sm')`
     font-size: 2.8rem;
     `};
 
-  ${mediaQueries('md')`
+  ${mediaQuery('md')`
     font-size: 3.2rem;
     width: 80%;
   `};
@@ -64,7 +65,9 @@ const Home = () => {
         }
         biography
         image {
-          ...ImageWithPreview
+          asset {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
         }
       }
     }

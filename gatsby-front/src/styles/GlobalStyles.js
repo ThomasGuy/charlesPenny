@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     --link_bg: #7f0202;
     --link_hover: #c42510d5;
     --red: #FF4949;
-    --black: #2E2E2E;
+    --black: #242424;
     --yellow: #ffc600;
     --white: #fff;
     --offWhite: #ededed;
