@@ -4,7 +4,7 @@ dotenv.config({ path: '.env' });
 
 export default {
   siteMetadata: {
-    title: 'Charles Penny',
+    title: 'Charles Penny Gallery',
     siteURL: 'https://charles.penny.co.uk',
     description: 'Gallery of pictures by Charles Penny',
     instagram: 'http://www.instagram.com/charles.penny',
@@ -16,7 +16,7 @@ export default {
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: process.env.SANITY_DATASET,
         token: process.env.SANITY_READ_TOKEN,
-        watchMode: true,
+        // watchMode: true,
       },
     },
     'gatsby-plugin-styled-components',
@@ -24,7 +24,6 @@ export default {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    // 'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
   ],
 };
