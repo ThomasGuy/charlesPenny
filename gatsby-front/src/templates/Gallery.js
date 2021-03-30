@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import SanityImageBox from '../components/SanityImageBox';
 import { mediaQuery } from '../styles/mediaQuery';
 import { Modal } from '../components/SimpleModal';
+import SEO from '../components/SEO';
 
 const GalleryLayout = styled.div`
   margin: 0 auto;
@@ -34,6 +35,7 @@ const Gallery = ({ data }) => {
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
   const { pics, cat } = data;
+
   const pictures = pics.edges.map(({ node }, idx) => {
     const { image, name, id, dimensions } = node;
     return (
@@ -44,9 +46,11 @@ const Gallery = ({ data }) => {
         show={cat.nodes[0].border}
         dimensions={dimensions}
         idx={idx}
+        alt={name}
       />
     );
   });
+
   const setIndex = useCallback(
     idx => {
       idx += pictures.length;
@@ -96,12 +100,18 @@ const Gallery = ({ data }) => {
   }, [clickHandler, handleKeyUp]);
 
   return (
-    <GalleryLayout onClick={clickHandler}>
-      {pictures}
-      {openModal && (
-        <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
-      )}
-    </GalleryLayout>
+    <>
+      <SEO
+        title={cat.nodes[0].name}
+        image={pics.edges[0].node.image?.asset?.fluid?.src}
+      />
+      <GalleryLayout onClick={clickHandler}>
+        {pictures}
+        {openModal && (
+          <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
+        )}
+      </GalleryLayout>
+    </>
   );
 };
 
@@ -123,6 +133,9 @@ export const pageQuery = graphql`
           id
           image {
             asset {
+              fluid {
+                src
+              }
               gatsbyImageData(
                 layout: CONSTRAINED
                 width: 600
@@ -136,6 +149,7 @@ export const pageQuery = graphql`
     cat: allSanityCategory(filter: { slug: { current: { eq: $slug } } }) {
       nodes {
         border
+        name
       }
     }
   }

@@ -5,6 +5,7 @@ import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page } from '../styles';
 import { mediaQuery } from '../styles/mediaQuery';
+import SEO from '../components/SEO';
 
 const UpComing = styled.h2`
   width: 90%;
@@ -66,6 +67,9 @@ const Home = () => {
         biography
         image {
           asset {
+            fluid {
+              src
+            }
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
         }
@@ -75,10 +79,10 @@ const Home = () => {
 
   const { events, biography, image } = home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
-  // const upComingEvents = events.map(evt => <Event evt={evt} />);
 
   return (
     <Page>
+      <SEO title="Home" image={home.image?.asset?.fluid?.src} />
       <SanityImageBox image={image} name="" alt="Charles Penny" />
       {bio}
       <UpComing>Exhibitions and Events</UpComing>

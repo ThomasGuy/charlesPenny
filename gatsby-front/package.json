@@ -27,6 +27,7 @@
     "gatsby-plugin-sharp": "^3.1.2",
     "gatsby-plugin-sitemap": "^3.1.0",
     "gatsby-plugin-styled-components": "^4.1.0",
+    "gatsby-source-filesystem": "^3.1.0",
     "gatsby-source-sanity": "^7.0.0",
     "gatsby-transformer-sharp": "^3.1.0",
     "netlify-cli": "^3.13.7",
@@ -51,7 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "0.0.0-00d4f95c2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "esm": "^3.2.25",
     "prettier": "^2.2.1"
   }

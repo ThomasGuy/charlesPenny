@@ -22,11 +22,11 @@ const Box = styled.div`
   }
 `;
 
-const SanityImageBox = ({ image, name, show, dimensions = {}, idx }) => (
-  <Box show={show}>
+const SanityImageBox = ({ image, name, show, dimensions = {}, alt, idx }) => (
+  <Box>
     <GatsbyImage
       image={image.asset.gatsbyImageData}
-      alt={name}
+      alt={alt}
       idx={idx}
       loading="eager"
       imgStyle={show && { border: '25px solid rgb(237, 237, 237)' }}

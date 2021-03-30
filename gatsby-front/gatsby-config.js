@@ -5,8 +5,9 @@ dotenv.config({ path: '.env' });
 export default {
   siteMetadata: {
     title: 'Charles Penny',
-    siteUrl: 'https://charles.penny.co.uk',
-    description: 'Gallery website',
+    siteURL: 'https://charles.penny.co.uk',
+    description: 'Gallery of pictures by Charles Penny',
+    instagram: 'http://www.instagram.com/charles.penny',
   },
   plugins: [
     {
