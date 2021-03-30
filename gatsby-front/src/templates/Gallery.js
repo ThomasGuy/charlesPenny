@@ -13,11 +13,12 @@ const GalleryLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 12rem;
-  gap: 1.5rem;
+  gap: 2rem;
 
   ${mediaQuery('sm')`
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    row-gap: 3rem;
+    column-gap: 2rem;
   `};
 
   ${mediaQuery('md')`
@@ -72,32 +73,13 @@ const Gallery = ({ data }) => {
     [setIndex, setOpen]
   );
 
-  const handleKeyUp = useCallback(
-    e => {
-      const keys = {
-        27: () => {
-          e.preventDefault();
-          setOpen(state => !state);
-          window.removeEventListener('keyup', handleKeyUp, false);
-        },
-      };
-
-      if (keys[e.keyCode]) {
-        keys[e.keyCode]();
-      }
-    },
-    [setOpen]
-  );
-
   useEffect(() => {
-    // window.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', clickHandler, false);
 
     return () => {
-      // window.removeEventListener('keyup', handleKeyUp, false);
       document.removeEventListener('click', clickHandler, false);
     };
-  }, [clickHandler, handleKeyUp]);
+  }, [clickHandler]);
 
   return (
     <>

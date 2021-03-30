@@ -11,7 +11,7 @@ const Box = styled.div`
     color: var(--white);
     opacity: 0.9;
     font-size: 1.8rem;
-    margin: 0 0 2.5rem 0;
+    margin: 0;
     padding-bottom: 1rem;
     line-height: 1.8;
   }
