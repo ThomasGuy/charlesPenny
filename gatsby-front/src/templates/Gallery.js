@@ -67,17 +67,17 @@ const Gallery = ({ data }) => {
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
-      setOpen(true);
       setIndex(parseInt(evt.target.attributes.idx.value));
+      setOpen(true);
     },
     [setIndex, setOpen]
   );
 
   useEffect(() => {
-    document.addEventListener('click', clickHandler, false);
+    window.addEventListener('click', clickHandler, false);
 
     return () => {
-      document.removeEventListener('click', clickHandler, false);
+      window.removeEventListener('click', clickHandler, false);
     };
   }, [clickHandler]);
 
