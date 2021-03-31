@@ -67,5 +67,6 @@ public/
 test.css
 
 # sanity files
-dist/
-public/
+sanity-backend/dist/
+gatsby-front/public/
+dist
