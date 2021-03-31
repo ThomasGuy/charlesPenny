@@ -11,7 +11,7 @@ export function Modal({ onCloseRequest, children }) {
         27: () => {
           e.preventDefault();
           onCloseRequest();
-          window.removeEventListener('keyup', handleKeyUp, false);
+          document.removeEventListener('keyup', handleKeyUp, false);
         },
       };
 
@@ -33,11 +33,11 @@ export function Modal({ onCloseRequest, children }) {
   );
 
   useEffect(() => {
-    window.addEventListener('keyup', handleKeyUp, false);
+    document.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', handleOutsideClick, false);
 
     return () => {
-      window.removeEventListener('keyup', handleKeyUp, false);
+      document.removeEventListener('keyup', handleKeyUp, false);
       document.removeEventListener('click', handleOutsideClick, false);
     };
   }, [handleKeyUp, handleOutsideClick]);
