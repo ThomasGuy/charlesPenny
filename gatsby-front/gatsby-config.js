@@ -25,5 +25,6 @@ export default {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-svg',
+    'gatsby-plugin-gatsby-cloud',
   ],
 };
