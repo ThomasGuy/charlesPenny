@@ -5,42 +5,42 @@ import { Button, ModalBox, ModalWrapper } from './modalStyle';
 export function Modal({ onCloseRequest, children }) {
   const modal = useRef(null);
 
-  const handleKeyUp = useCallback(
-    e => {
-      const keys = {
-        27: () => {
-          e.preventDefault();
-          onCloseRequest();
-          document.removeEventListener('keyup', handleKeyUp, false);
-        },
-      };
+  // const handleKeyUp = useCallback(
+  //   e => {
+  //     const keys = {
+  //       27: () => {
+  //         e.preventDefault();
+  //         onCloseRequest();
+  //         document.removeEventListener('keyup', handleKeyUp, false);
+  //       },
+  //     };
 
-      if (keys[e.keyCode]) {
-        keys[e.keyCode]();
-      }
-    },
-    [onCloseRequest]
-  );
+  //     if (keys[e.keyCode]) {
+  //       keys[e.keyCode]();
+  //     }
+  //   },
+  //   [onCloseRequest]
+  // );
 
   const handleOutsideClick = useCallback(
     e => {
       if (modal.current && !modal.current.contains(e.target)) {
         onCloseRequest();
-        document.removeEventListener('click', handleOutsideClick, false);
+        // document.removeEventListener('click', handleOutsideClick, false);
       }
     },
     [onCloseRequest]
   );
 
   useEffect(() => {
-    document.addEventListener('keyup', handleKeyUp, false);
+    // document.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', handleOutsideClick, false);
 
     return () => {
-      document.removeEventListener('keyup', handleKeyUp, false);
+      // document.removeEventListener('keyup', handleKeyUp, false);
       document.removeEventListener('click', handleOutsideClick, false);
     };
-  }, [handleKeyUp, handleOutsideClick]);
+  }, [handleOutsideClick]);
 
   return (
     <ModalWrapper>

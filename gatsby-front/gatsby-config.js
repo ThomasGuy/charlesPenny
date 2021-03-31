@@ -18,12 +18,7 @@ export default {
         token: process.env.SANITY_READ_TOKEN,
       },
     },
-    {
-      resolve: 'gatsby-plugin-styled-components',
-      options: {
-        fullName: true,
-      },
-    },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
