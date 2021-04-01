@@ -59,8 +59,8 @@ const Home = () => {
             road
           }
           dates {
-            start
-            finish
+            finish(formatString: "DD-MM-YY")
+            start(formatString: "DD-MM-YY")
           }
           about
         }
