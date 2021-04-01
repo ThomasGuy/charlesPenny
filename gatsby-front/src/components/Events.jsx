@@ -19,6 +19,10 @@ const Container = styled.div`
   ${mediaQuery('md')`
     width: 80%;
   `};
+
+  ${mediaQuery('lg')`
+    height: 40rem;
+  `};
 `;
 
 const EventList = styled.ul`
@@ -89,7 +93,10 @@ export function Event({ evt }) {
       </h4>
       <p>{about}</p>
       <hr />
-      <p>{`${number} ${road}, ${city}, ${postcode}, ${country}`}</p>
+      <p>
+        {`${number} ${road}, ${city}`}
+        {postcode && ` ${postcode}`} {country && `, ${country}`}
+      </p>
     </EventListItem>
   );
 }

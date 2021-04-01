@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import CloseIcon from './svg/x-octagon.svg';
 import { Button, ModalBox, ModalWrapper } from './modalStyle';
 
 export function Modal({ onCloseRequest, children }) {
@@ -26,7 +25,6 @@ export function Modal({ onCloseRequest, children }) {
     e => {
       if (modal.current && !modal.current.contains(e.target)) {
         onCloseRequest();
-        // document.removeEventListener('click', handleOutsideClick, false);
       }
     },
     [onCloseRequest]
@@ -44,12 +42,10 @@ export function Modal({ onCloseRequest, children }) {
 
   return (
     <ModalWrapper>
-      <ModalBox ref={modal}>
-        <Button type="button" onClick={onCloseRequest}>
-          <CloseIcon />
-        </Button>
-        {children}
-      </ModalBox>
+      <Button type="button" onClick={onCloseRequest}>
+        X
+      </Button>
+      <ModalBox ref={modal}>{children}</ModalBox>
     </ModalWrapper>
   );
 }

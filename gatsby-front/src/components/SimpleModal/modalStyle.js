@@ -4,20 +4,19 @@ import { mediaQuery } from '../../styles/mediaQuery';
 export const Button = styled.button`
   position: absolute;
   z-index: 1;
-  top: 2px;
-  right: 2px;
+  top: 4px;
+  right: 4px;
 
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: var(--white);
-  opacity: 0.6;
+  background-color: var(--black);
+  color: var(--offWhite);
+  border: none;
   border-radius: 50%;
-  padding: 5px;
-  margin: 2px;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   transition: filter 300ms;
   outline: none;
 
@@ -26,13 +25,14 @@ export const Button = styled.button`
   }
 
   svg {
-    fill: var(--black);
+    fill: var(--white);
     width: 25px;
     height: 25px;
   }
 `;
 
 export const ModalWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,9 +47,8 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  position: relative;
   width: 100%;
-  background-color: #252323;
+  background-color: #1a1a1a;
   padding: 1rem;
   overflow-y: auto;
 
