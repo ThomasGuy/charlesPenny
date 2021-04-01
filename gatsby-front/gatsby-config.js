@@ -1,16 +1,16 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV || 'development'}`,
 });
 
 // eslint-disable-next-line import/first
-import clientConfig from './client-config';
+const clientConfig = require('./client-config');
 
 const token = process.env.SANITY_READ_TOKEN;
 const isProd = process.env.NODE_ENV === 'production';
 
-export default {
+module.exports = {
   siteMetadata: {
     title: 'Charles Penny Gallery',
     siteURL: 'https://charles.penny.co.uk',

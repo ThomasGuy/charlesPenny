@@ -1,10 +1,10 @@
-import path from 'path';
+const path = require(`path`);
 // Log out information after a build is done
-export const onPostBuild = ({ reporter }) => {
+exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`);
 };
 // Create pages dynamically
-async function categoriesIntoPages({ graphql, actions, reporter }) {
+const categoryPages = async (graphql, actions, reporter) => {
   const { createPage } = actions;
 
   const result = await graphql(`
@@ -29,8 +29,7 @@ async function categoriesIntoPages({ graphql, actions, reporter }) {
     return;
   }
 
-  const project = (result.data.allSanityCategory || {}).edges || [];
-
+  const project = result.data.allSanityCategory?.edges || [];
   project.forEach(({ node }) => {
     const slug = node.slug.current;
 
@@ -39,12 +38,12 @@ async function categoriesIntoPages({ graphql, actions, reporter }) {
       component: path.resolve(`src/templates/Gallery.js`),
       context: {
         title: node.name,
-        slug,
+        slug: node.slug.current,
       },
     });
   });
-}
+};
 
-export async function createPages(params) {
-  await Promise.all([categoriesIntoPages(params)]);
-}
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await categoryPages(graphql, actions, reporter);
+};

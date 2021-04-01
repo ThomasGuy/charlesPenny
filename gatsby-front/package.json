@@ -8,10 +8,10 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "NODE_OPTIONS=\"-r esm\" NODE_ENV=production gatsby build",
-    "develop": "NODE_OPTIONS=\"-r esm\" NODE_ENV=development gatsby develop",
+    "build": "NODE_ENV=production gatsby build",
+    "develop": "NODE_ENV=development gatsby develop",
     "start": "npm run develop",
-    "serve": "NODE_OPTIONS=\"-r esm\" gatsby serve",
+    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "netlify": "netlify dev",
     "prebuild": "netlify-lambda install"
@@ -33,7 +33,6 @@
     "netlify-cli": "^3.13.10",
     "netlify-lambda": "^2.0.3",
     "netlify-plugin-gatsby-cache": "^0.3.2",
-    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -53,7 +52,6 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "esm": "^3.2.25",
     "prettier": "^2.2.1"
   }
 }
