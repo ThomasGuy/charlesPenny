@@ -1,7 +1,6 @@
-const path = require(`path`);
 // Log out information after a build is done
 exports.onPostBuild = ({ reporter }) => {
-  reporter.info(`Your Gatsby site has been built!`);
+  reporter.info(`Sport your Gatsby site has been built!`);
 };
 // Create pages dynamically
 const categoryPages = async (graphql, actions, reporter) => {
@@ -32,13 +31,13 @@ const categoryPages = async (graphql, actions, reporter) => {
   const project = result.data.allSanityCategory?.edges || [];
   project.forEach(({ node }) => {
     const slug = node.slug.current;
+    const path = `/category/${slug}`;
 
     createPage({
-      path: `/category/${slug}`,
-      component: path.resolve(`src/templates/Gallery.js`),
+      path,
+      component: require.resolve(`./src/templates/Gallery.js`),
       context: {
-        title: node.name,
-        slug: node.slug.current,
+        slug,
       },
     });
   });
