@@ -28,7 +28,7 @@ const categoryPages = async (graphql, actions, reporter) => {
     return;
   }
 
-  const project = result.data.allSanityCategory?.edges || [];
+  const project = (result.data.allSanityCategory || {}).edges || [];
   project.forEach(({ node }) => {
     const slug = node.slug.current;
     const path = `/category/${slug}`;
