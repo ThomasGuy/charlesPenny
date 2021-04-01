@@ -3,6 +3,7 @@
 import { graphql } from 'gatsby';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+
 import SanityImageBox from '../components/SanityImageBox';
 import { mediaQuery } from '../styles/mediaQuery';
 import { Modal } from '../components/SimpleModal';

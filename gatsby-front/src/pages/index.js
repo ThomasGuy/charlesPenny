@@ -82,7 +82,7 @@ const Home = () => {
 
   return (
     <Page>
-      <SEO title="Home" image={home.image?.asset?.fluid?.src} />
+      <SEO title="Home" image={image?.asset?.fluid?.src} />
       <SanityImageBox image={image} name="" alt="Charles Penny" />
       {bio}
       <UpComing>Exhibitions and Events</UpComing>
