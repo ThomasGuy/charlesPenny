@@ -5,8 +5,7 @@
   },
   "api": {
     "projectId": "kjkw2ad3",
-    "dataset": "website-pro",
-    "apiVersion": "2021-03-3"
+    "dataset": "website-pro"
   },
   "plugins": [
     "@sanity/base",
@@ -19,9 +18,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
