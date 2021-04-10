@@ -32,6 +32,16 @@ module.exports = {
         overlayDrafts: !isProd && token,
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-sanity-image',
+    //   options: {
+    //     ...clientConfig.sanity,
+    //     token,
+    //     watchMode: !isProd,
+    //     useCdn: isProd,
+    //     overlayDrafts: !isProd && token,
+    //   },
+    // },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-gatsby-cloud',
