@@ -66,24 +66,24 @@ const Home = () => {
         }
         biography
         image {
+          ...ImageWithPreview
+        }
+        seo: image {
           asset {
-            fluid {
-              src
-            }
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            url
           }
         }
       }
     }
   `);
 
-  const { events, biography, image } = home;
+  const { events, biography, image, seo } = home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
 
   return (
     <Page>
-      <SEO title="Home" image={image?.asset?.fluid?.src} />
-      <SanityImageBox image={image} name="" alt="Charles Penny" />
+      <SEO title="Charles Penny home page" imageSrc={seo?.asset?.url} />
+      <SanityImageBox image={image} name="" alt="Charles Penny" width={900} />
       {bio}
       <UpComing>Exhibitions and Events</UpComing>
       <Events events={events} />

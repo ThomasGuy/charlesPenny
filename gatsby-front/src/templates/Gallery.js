@@ -39,17 +39,20 @@ const Gallery = ({ data }) => {
   const { pics, cat } = data;
 
   const pictures = pics.edges.map(({ node }, idx) => {
-    const { image, name, id, dimensions } = node;
+    const { image, name, id, dimensions, seo } = node;
     return (
-      <SanityImageBox
-        name={name}
-        image={image}
-        key={id}
-        show={cat.nodes[0].border}
-        dimensions={dimensions}
-        idx={idx}
-        alt={name}
-      />
+      <div key={id}>
+        <SEO title={name} imageSrc={seo.asset.url} />
+        <SanityImageBox
+          name={name}
+          image={image}
+          show={cat.nodes[0].border}
+          dimensions={dimensions}
+          idx={idx}
+          alt={name}
+          width={350}
+        />
+      </div>
     );
   });
 
@@ -83,18 +86,12 @@ const Gallery = ({ data }) => {
   }, [clickHandler]);
 
   return (
-    <>
-      <SEO
-        title={cat.nodes[0].name}
-        image={pics.edges[0].node.image?.asset?.fluid?.src}
-      />
-      <GalleryLayout onClick={clickHandler}>
-        {pictures}
-        {openModal && (
-          <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
-        )}
-      </GalleryLayout>
-    </>
+    <GalleryLayout onClick={clickHandler}>
+      {pictures}
+      {openModal && (
+        <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
+      )}
+    </GalleryLayout>
   );
 };
 
@@ -104,7 +101,6 @@ export const pageQuery = graphql`
   query GalleryPageQuery($slug: String!) {
     pics: allSanityPicture(
       filter: { category: { slug: { current: { eq: $slug } } } }
-      sort: { fields: image___asset___fluid___aspectRatio, order: DESC }
     ) {
       edges {
         node {
@@ -115,15 +111,11 @@ export const pageQuery = graphql`
           name
           id
           image {
+            ...ImageWithPreview
+          }
+          seo: image {
             asset {
-              fluid {
-                src
-              }
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 600
-                placeholder: BLURRED
-              )
+              url
             }
           }
         }

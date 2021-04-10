@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Helmet } from 'react-helmet';
 
-function SEO({ children, location, description, title, image }) {
+function SEO({ children, location, description, title, imageSrc }) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -27,7 +27,7 @@ function SEO({ children, location, description, title, image }) {
       <meta charSet="utf-8" />
       <meta name="description" content={site.siteMetadata.description} />
       {location && <meta property="og:url" content={location.href} />}
-      <meta property="og:image" content={image || '/bell.svg'} />
+      <meta property="og:image" content={imageSrc || '/bell.svg'} />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta
         property="og:site_name"
