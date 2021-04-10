@@ -1,5 +1,12 @@
 // import client from 'part:@sanity/base/client';
 import { AiOutlinePicture as icon } from 'react-icons/ai';
+import slugify from 'slugify';
+// eslint-disable-next-line import/no-unresolved
+import sanityClient from 'part:@sanity/base/client';
+
+const client = sanityClient.withConfig({
+  apiVersion: '2021-04-01',
+});
 
 export default {
   name: 'picture',
@@ -18,17 +25,21 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'reference',
-      description: 'Choose a Category from the dropdown menu',
       to: [{ type: 'category' }],
+      description: 'Choose a Category from the dropdown menu',
       validation: Rule => Rule.required(),
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Enter the Picture Title above then click Generate',
+      description:
+        'Enter the Picture Title and Category above then click Generate',
       options: {
-        source: 'name',
+        source: async doc => {
+          const cat = await client.getDocument(doc.category._ref);
+          return `${slugify(doc.name)}-in-${slugify(cat.name)}`;
+        },
       },
       validation: Rule => Rule.required(),
     },
@@ -46,6 +57,13 @@ export default {
       title: 'Image dimensions',
       type: 'dimensions',
       description: 'add picture dimensions',
+    },
+  ],
+  orderings: [
+    {
+      title: 'Category',
+      name: 'category',
+      by: [{ field: 'category', direction: 'desc' }],
     },
   ],
   preview: {
