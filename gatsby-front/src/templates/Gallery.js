@@ -36,21 +36,21 @@ const Gallery = ({ data }) => {
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
-  const { pics, cat } = data;
+  const { pics } = data;
 
   const pictures = pics.edges.map(({ node }, idx) => {
-    const { image, name, id, dimensions, seo } = node;
+    const { image, name, id, dimensions, category } = node;
     return (
       <div key={id}>
-        <SEO title={name} imageSrc={seo.asset.url} />
+        <SEO title={name} imageSrc={image.asset.url} />
         <SanityImageBox
           name={name}
+          title={name}
           image={image}
-          show={cat.nodes[0].border}
+          show={category.border}
           dimensions={dimensions}
           idx={idx}
           alt={name}
-          width={350}
         />
       </div>
     );
@@ -111,20 +111,19 @@ export const pageQuery = graphql`
           name
           id
           image {
-            ...ImageWithPreview
-          }
-          seo: image {
             asset {
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 450
+                placeholder: BLURRED
+              )
               url
             }
           }
+          category {
+            border
+          }
         }
-      }
-    }
-    cat: allSanityCategory(filter: { slug: { current: { eq: $slug } } }) {
-      nodes {
-        border
-        name
       }
     }
   }

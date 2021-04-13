@@ -1,6 +1,6 @@
 import React from 'react';
 // import { GatsbyImage } from 'gatsby-plugin-image';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -35,11 +35,17 @@ const SanityImageBox = ({
   show = false,
   dimensions = {},
   alt,
-  idx,
-  width,
+  idx = 0,
+  title,
 }) => (
   <Box show={show}>
-    <SanityImage {...image} width={width} alt={alt} idx={idx} loading="eager" />
+    <GatsbyImage
+      image={image.asset.gatsbyImageData}
+      title={title}
+      alt={alt}
+      idx={idx}
+      loading="eager"
+    />
 
     {name && (
       <p>

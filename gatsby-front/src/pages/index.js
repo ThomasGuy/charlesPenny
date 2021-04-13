@@ -52,11 +52,11 @@ const Home = () => {
           _key
           name
           address {
-            city
-            country
-            number
-            postcode
             road
+            postcode
+            number
+            country
+            city
           }
           dates {
             finish(formatString: "DD-MM-YY")
@@ -66,10 +66,8 @@ const Home = () => {
         }
         biography
         image {
-          ...ImageWithPreview
-        }
-        seo: image {
           asset {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
             url
           }
         }
@@ -77,13 +75,18 @@ const Home = () => {
     }
   `);
 
-  const { events, biography, image, seo } = home;
+  const { events, biography, image } = home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
 
   return (
     <Page>
-      <SEO title="Charles Penny home page" imageSrc={seo?.asset?.url} />
-      <SanityImageBox image={image} name="" alt="Charles Penny" width={900} />
+      <SEO title="Charles Penny home page" imageSrc={image?.asset?.url} />
+      <SanityImageBox
+        image={image}
+        name=""
+        alt="Charles Penny"
+        title="Charles Penny"
+      />
       {bio}
       <UpComing>Exhibitions and Events</UpComing>
       <Events events={events} />

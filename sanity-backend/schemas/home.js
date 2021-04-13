@@ -7,6 +7,8 @@ export default {
   title: 'Home Page',
   icon,
   type: 'document',
+  // This will remove the hOME document type from the create-menus.
+  __experimental_actions: ['update', 'publish' /* 'create', 'delete' */],
   fields: [
     {
       name: 'name',

@@ -65,6 +65,11 @@ export default {
       name: 'category',
       by: [{ field: 'category', direction: 'desc' }],
     },
+    {
+      title: 'Name',
+      name: 'name',
+      by: [{ field: 'name', direction: 'asc' }],
+    },
   ],
   preview: {
     select: {
@@ -74,7 +79,7 @@ export default {
     },
     prepare({ name, category, media }) {
       return {
-        title: `${category} - ${name}`,
+        title: `${name} - ${category}`,
         media,
       };
     },
