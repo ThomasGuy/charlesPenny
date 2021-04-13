@@ -1,10 +1,8 @@
-import { RiHome2Line as icon } from 'react-icons/ri';
+import { FaRegEnvelope as icon } from 'react-icons/fa';
 
 export default {
-  // Computer name
-  name: 'home',
-  //  visible name
-  title: 'Home Page',
+  name: 'contact',
+  title: 'Contact Page',
   icon,
   type: 'document',
   // This will remove the hOME document type from the create-menus.
@@ -12,16 +10,31 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Home Page',
+      title: 'Contact Page title',
       type: 'string',
-      readOnly: true,
+      // readOnly: true,
       validation: Rule => Rule.required(),
+    },
+    {
+      name: 'email',
+      title: 'email',
+      type: 'string',
+    },
+    {
+      name: 'mug',
+      title: 'Mug Shot',
+      type: 'image',
+      decription: 'Artists Photo',
+      validation: Rule => Rule.required(),
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'image',
       title: 'Image',
       type: 'image',
-      description: 'Home page image',
+      description: 'Contact page image',
       options: {
         hotspot: true,
       },
@@ -36,12 +49,15 @@ export default {
       of: [{ type: 'string' }],
     },
     {
-      title: 'Events and Exhibtions',
-      name: 'events',
-      description: 'Add or remove each event individually',
-      validation: Rule => Rule.required(),
+      name: 'links',
+      title: 'Website Links',
       type: 'array',
-      of: [{ type: 'event' }],
+      of: [{ type: 'link' }],
+    },
+    {
+      title: 'Social Media',
+      name: 'social',
+      type: 'social',
     },
   ],
 };

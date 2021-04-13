@@ -12,6 +12,9 @@ import dates from './dates';
 import event from './event';
 import address from './address';
 import dimensions from './dimensions';
+import contact from './contact';
+import link from './link';
+import social from './social';
 
 export default createSchema({
   // We name our schema
@@ -27,5 +30,8 @@ export default createSchema({
     event,
     address,
     dimensions,
+    link,
+    social,
+    contact,
   ]),
 });

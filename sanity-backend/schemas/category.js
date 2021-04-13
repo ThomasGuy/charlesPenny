@@ -4,7 +4,6 @@ import slugify from 'slugify';
 export default {
   // Computer name
   name: 'category',
-  //  visible name
   title: 'Category',
   icon,
   type: 'document',

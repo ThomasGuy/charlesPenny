@@ -3,7 +3,6 @@ import { AiOutlineEnvironment as icon } from 'react-icons/ai';
 export default {
   // Computer name
   name: 'address',
-  //  visible name
   title: 'Address',
   icon,
   type: 'object',

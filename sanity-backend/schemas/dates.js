@@ -3,7 +3,6 @@ import { CgCalendarDates as icon } from 'react-icons/cg';
 export default {
   // Computer name
   name: 'dates',
-  //  visible name
   title: 'Dates',
   icon,
   type: 'object',

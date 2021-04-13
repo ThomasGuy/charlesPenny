@@ -3,7 +3,6 @@ import { MdEventSeat as icon } from 'react-icons/md';
 export default {
   // Computer name
   name: 'event',
-  //  visible name
   title: 'Event',
   icon,
   type: 'object',

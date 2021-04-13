@@ -1,6 +1,5 @@
 import React from 'react';
-// import { GatsbyImage } from 'gatsby-plugin-image';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -13,6 +12,7 @@ const Box = styled.div`
     opacity: 0.9;
     font-size: 1.8rem;
     margin: 0;
+    margin-top: 0.3rem;
     padding-bottom: 1rem;
     line-height: 1.8;
   }
@@ -32,7 +32,7 @@ const Box = styled.div`
 const SanityImageBox = ({
   image,
   name,
-  show = false,
+  show,
   dimensions = {},
   alt,
   idx = 0,

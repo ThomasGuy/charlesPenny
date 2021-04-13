@@ -3,7 +3,6 @@ import { BiRuler as icon } from 'react-icons/bi';
 export default {
   // Computer name
   name: 'dimensions',
-  //  visible name
   title: 'Dimensions',
   icon,
   type: 'object',

@@ -36,9 +36,8 @@ const Gallery = ({ data }) => {
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
-  const { pics } = data;
 
-  const pictures = pics.edges.map(({ node }, idx) => {
+  const pictures = data.pics.edges.map(({ node }, idx) => {
     const { image, name, id, dimensions, category } = node;
     return (
       <div key={id}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
@@ -44,38 +43,8 @@ const Bio = styled.p`
   }
 `;
 
-const Home = () => {
-  const { home } = useStaticQuery(graphql`
-    query {
-      home: sanityHome {
-        events {
-          _key
-          name
-          address {
-            road
-            postcode
-            number
-            country
-            city
-          }
-          dates {
-            finish(formatString: "DD-MM-YY")
-            start(formatString: "DD-MM-YY")
-          }
-          about
-        }
-        biography
-        image {
-          asset {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-            url
-          }
-        }
-      }
-    }
-  `);
-
-  const { events, biography, image } = home;
+const Home = ({ pageContext }) => {
+  const { events, biography, image } = pageContext.home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
 
   return (
@@ -95,12 +64,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// import { navigate } from '@reach/router';
-
-// export const Index = () => {
-//   useEffect(() => {
-//     navigate('/home/');
-//   }, []);
-//   return null;
-// };
