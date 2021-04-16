@@ -122,7 +122,6 @@ const contactPage = async (graphql, actions, reporter) => {
         social {
           facebook
           instagram
-          twitter
         }
       }
     }
