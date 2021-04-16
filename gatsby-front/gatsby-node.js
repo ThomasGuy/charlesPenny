@@ -94,6 +94,62 @@ const homePage = async (graphql, actions, reporter) => {
   });
 };
 
+const contactPage = async (graphql, actions, reporter) => {
+  const { createPage } = actions;
+
+  const result = await graphql(`
+    {
+      contact: sanityContact {
+        name
+        biography
+        email
+        links {
+          href
+          name
+        }
+        image {
+          asset {
+            gatsbyImageData(layout: FULL_WIDTH)
+            url
+          }
+        }
+        mug {
+          asset {
+            gatsbyImageData(layout: FIXED, width: 200)
+            url
+          }
+        }
+        social {
+          facebook
+          instagram
+          twitter
+        }
+      }
+    }
+  `);
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error on contact page while running GraphQL query.`);
+    return;
+  }
+
+  const contact = result.data.contact || {};
+  if (contact) reporter.info('Contact page created sucessfully!');
+
+  createPage({
+    path: '/contact/',
+    component: require.resolve(`./src/templates/Contact.js`),
+    context: {
+      contact,
+    },
+  });
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  await Promise.all([categoryPages(graphql, actions, reporter)]);
+  await Promise.all([
+    categoryPages(graphql, actions, reporter),
+    contactPage(graphql, actions, reporter),
+    homePage(graphql, actions, reporter),
+  ]);
 };

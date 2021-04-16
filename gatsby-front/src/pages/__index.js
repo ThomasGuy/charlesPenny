@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
@@ -30,7 +31,7 @@ const UpComing = styled.h2`
   `};
 `;
 
-export const Bio = styled.p`
+const Bio = styled.p`
   text-align: center;
   font-size: 1.5rem;
   line-height: 1.4;
@@ -43,8 +44,38 @@ export const Bio = styled.p`
   }
 `;
 
-const Home = ({ pageContext }) => {
-  const { events, biography, image } = pageContext.home;
+const Home = () => {
+  const { home } = useStaticQuery(graphql`
+    query {
+      home: sanityHome {
+        events {
+          _key
+          name
+          address {
+            road
+            postcode
+            number
+            country
+            city
+          }
+          dates {
+            finish(formatString: "DD-MM-YY")
+            start(formatString: "DD-MM-YY")
+          }
+          about
+        }
+        biography
+        image {
+          asset {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            url
+          }
+        }
+      }
+    }
+  `);
+
+  const { events, biography, image } = home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
 
   return (
@@ -64,3 +95,12 @@ const Home = ({ pageContext }) => {
 };
 
 export default Home;
+
+// import { navigate } from '@reach/router';
+
+// export const Index = () => {
+//   useEffect(() => {
+//     navigate('/home/');
+//   }, []);
+//   return null;
+// };
