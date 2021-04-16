@@ -1,8 +1,7 @@
 import React from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import SanityImageBox from '../components/SanityImageBox';
-import { Page, Grid, Row, Col } from '../styles';
-import { Bio } from './Home';
+import { Page, Grid, Row, Col, Bio, Image } from '../styles';
 import SEO from '../components/SEO';
 
 const Contact = ({ pageContext }) => {
@@ -30,12 +29,14 @@ const Contact = ({ pageContext }) => {
 
         <Row>
           <SEO title="Charles Penny" imageSrc={mug.asset.url} />
-          <SanityImageBox
-            name=""
-            alt="Charles Penny"
-            title="Charles Penny"
-            image={mug}
-          />
+          <Image width="200px">
+            <SanityImageBox
+              name=""
+              alt="Charles Penny"
+              title="Charles Penny"
+              image={mug}
+            />
+          </Image>
           <Col>
             <div className="bottom">
               <a href={`mailto:${email}`}>

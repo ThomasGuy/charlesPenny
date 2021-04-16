@@ -23,16 +23,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-sanity-image',
-      options: {
-        ...clientConfig.sanity,
-        token,
-        // watchMode: !isProd,
-        // useCdn: isProd,
-        // overlayDrafts: !isProd && token,
-      },
-    },
-    {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
