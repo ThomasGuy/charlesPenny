@@ -109,13 +109,13 @@ const contactPage = async (graphql, actions, reporter) => {
         }
         image {
           asset {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
             url
           }
         }
         mug {
           asset {
-            gatsbyImageData(layout: FIXED, width: 200)
+            gatsbyImageData(layout: CONSTRAINED, width: 200)
             url
           }
         }
