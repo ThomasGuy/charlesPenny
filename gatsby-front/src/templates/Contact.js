@@ -14,6 +14,11 @@ const Contact = ({ pageContext }) => {
     social,
     links,
   } = pageContext.contact;
+
+  function makeId(slug, idx) {
+    return `${slug}-${idx}`;
+  }
+
   return (
     <Page>
       <Grid>
@@ -48,12 +53,18 @@ const Contact = ({ pageContext }) => {
         </Row>
 
         <Row>
-          <Col>{biography && biography.map(bio => <Bio>{bio}</Bio>)}</Col>
+          <Col>
+            {biography &&
+              biography.length > 0 &&
+              biography.map((bio, idx) => (
+                <Bio key={makeId('bio', idx)}>{bio}</Bio>
+              ))}
+          </Col>
         </Row>
 
         <Row>
           <Col>
-            {links && (
+            {links && links.length > 0 && (
               <>
                 <p id="comment">
                   Charles' paintings & prints can be found on the following
