@@ -3,7 +3,7 @@ export default {
     {
       name: 'gatsby',
       options: {
-        sites: [{ siteUrl: 'charlespennymaster.gatsbyjs.io' }],
+        sites: [{ siteUrl: 'https://preview-charlespennymaster.gtsb.io/' }],
       },
     },
   ],
