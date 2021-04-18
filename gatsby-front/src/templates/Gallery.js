@@ -37,32 +37,36 @@ const Gallery = ({ data }) => {
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
 
-  const pictures = data.pics.edges.map(({ node }, idx) => {
+  const propsArray = data.pics.edges.map(({ node }) => {
     const { image, name, id, dimensions, category } = node;
-    return (
-      <div key={id}>
-        <SEO title={name} imageSrc={image.asset.url} />
-        <SanityImageBox
-          name={name}
-          title={name}
-          image={image}
-          show={category.border}
-          dimensions={dimensions}
-          idx={idx}
-          alt={name}
-        />
-      </div>
-    );
+    return {
+      image,
+      alt: name,
+      name,
+      id,
+      show: category.border,
+      dimensions,
+      aspectRatio: image.asset.metadata.dimensions.aspectRatio,
+    };
+  });
+
+  const sorted = propsArray.sort(function (p1, p2) {
+    return p2.aspectRatio - p1.aspectRatio;
+  });
+
+  const pictures = sorted.map((props, idx) => {
+    const { aspectRatio, ...others } = props;
+    return <SanityImageBox idx={idx} {...others} />;
   });
 
   const setIndex = useCallback(
     idx => {
-      idx += pictures.length;
-      idx %= pictures.length;
+      idx += propsArray.length;
+      idx %= propsArray.length;
       indexRef.current = idx;
       _setIndex(idx);
     },
-    [pictures.length]
+    [propsArray.length]
   );
 
   const clickHandler = useCallback(
@@ -86,7 +90,15 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
-      {pictures}
+      {pictures.map(pic => {
+        const { image, name, id } = pic.props;
+        return (
+          <div key={id}>
+            <SEO title={name} imageSrc={image.asset.url} />
+            {pic}
+          </div>
+        );
+      })}
       {openModal && (
         <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
       )}
@@ -103,24 +115,29 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
+          name
+          category {
+            border
+          }
           dimensions {
             height
             width
           }
-          name
-          id
           image {
             asset {
+              url
+              metadata {
+                dimensions {
+                  aspectRatio
+                }
+              }
               gatsbyImageData(
                 layout: CONSTRAINED
                 width: 450
                 placeholder: BLURRED
               )
-              url
             }
-          }
-          category {
-            border
           }
         }
       }

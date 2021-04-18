@@ -14,7 +14,7 @@ export default {
       name: 'name',
       title: 'Home Page',
       type: 'string',
-      readOnly: true,
+      // readOnly: true,
       validation: Rule => Rule.required(),
     },
     {

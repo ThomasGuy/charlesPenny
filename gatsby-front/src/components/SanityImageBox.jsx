@@ -32,16 +32,15 @@ const Box = styled.div`
 const SanityImageBox = ({
   image,
   name,
-  show,
+  show = false,
   dimensions = {},
   alt,
-  idx = 0,
-  title,
+  idx,
 }) => (
   <Box show={show}>
     <GatsbyImage
       image={image.asset.gatsbyImageData}
-      title={title}
+      title={alt}
       alt={alt}
       idx={idx}
       loading="eager"
