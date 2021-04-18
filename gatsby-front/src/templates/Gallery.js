@@ -91,12 +91,11 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
-      <SEO title={title} />
       {pictures.map(pic => {
         const { image, id } = pic.props;
         return (
           <div key={id}>
-            <SEO imageSrc={image.asset.url} />
+            <SEO title={title} imageSrc={image.asset.url} />
             {pic}
           </div>
         );
