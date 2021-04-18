@@ -36,6 +36,7 @@ const Gallery = ({ data }) => {
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
+  const title = data.title.slug.current;
 
   const propsArray = data.pics.edges.map(({ node }) => {
     const { image, name, id, dimensions, category } = node;
@@ -90,11 +91,12 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
+      <SEO title={title} />
       {pictures.map(pic => {
-        const { image, name, id } = pic.props;
+        const { image, id } = pic.props;
         return (
           <div key={id}>
-            <SEO title={name} imageSrc={image.asset.url} />
+            <SEO imageSrc={image.asset.url} />
             {pic}
           </div>
         );
@@ -140,6 +142,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    title: sanityCategory(slug: { current: { eq: $slug } }) {
+      slug {
+        current
       }
     }
   }
