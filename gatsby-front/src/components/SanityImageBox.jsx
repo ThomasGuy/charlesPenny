@@ -12,16 +12,16 @@ const Box = styled.div`
     text-align: center;
     color: var(--white);
     opacity: 0.9;
-    font-size: 1.8rem;
     margin: 0;
     margin-top: 0.3rem;
     padding-bottom: 1rem;
-    line-height: 1.8;
+    font-size: 1.4rem;
+    line-height: 1.6;
 
     .dim {
       color: var(--offWhite);
       opacity: 0.8;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     ${mediaQuery('sm')`

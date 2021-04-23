@@ -69,7 +69,7 @@ export const NavbarNavItem = styled.div`
 `;
 
 export const SmallBanner = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: 0 auto;
   padding-left: 0.5rem;
 
@@ -80,6 +80,10 @@ export const SmallBanner = styled.h2`
 
   ${mediaQuery('sm')`
     padding-left: 2rem;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
+  `};
+
+  ${mediaQuery('md')`
+    font-size: 3rem;
   `};
 `;

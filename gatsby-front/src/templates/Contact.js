@@ -27,9 +27,10 @@ const Contact = ({ pageContext }) => {
 
   return (
     <Page>
+      <SEO title={name} />
       <Grid>
         <Row>
-          <SEO title={name} imageSrc={image.asset.url} />
+          <SEO imageSrc={image.asset.url} />
           <SanityImageBox
             image={image}
             alt={name}
@@ -39,7 +40,7 @@ const Contact = ({ pageContext }) => {
         </Row>
 
         <Row>
-          <SEO title="Charles Penny" imageSrc={mug.asset.url} />
+          <SEO imageSrc={mug.asset.url} />
           <Image width="200px">
             <SanityImageBox
               name=""
@@ -77,8 +78,8 @@ const Contact = ({ pageContext }) => {
                   websites
                 </p>
                 <ul>
-                  {links.map(link => (
-                    <li>
+                  {links.map((link, idx) => (
+                    <li key={makeId('link', idx)}>
                       <a href={`${link.url}`}>{link.name}</a>
                     </li>
                   ))}
@@ -94,7 +95,7 @@ const Contact = ({ pageContext }) => {
               <>
                 <p id="comment">Please follow Charles on social media</p>
                 <ul>
-                  <li>
+                  <li key="social-media">
                     {social.facebook && (
                       <a
                         id="social"

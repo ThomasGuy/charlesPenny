@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { PropTypes } from 'prop-types';
 import React from 'react';
 
 import { Helmet } from 'react-helmet';
@@ -46,3 +47,13 @@ function SEO({ children, location, description, title, imageSrc }) {
 }
 
 export default SEO;
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+};
+
+SEO.defaultProps = {
+  title: null,
+  description: null,
+};
