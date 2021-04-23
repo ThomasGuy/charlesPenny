@@ -1,10 +1,12 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
+import { mediaQuery } from '../styles/mediaQuery';
 
 const Box = styled.div`
   width: 100%;
   height: auto;
+  margin: o auto;
 
   p {
     text-align: center;
@@ -15,46 +17,54 @@ const Box = styled.div`
     margin-top: 0.3rem;
     padding-bottom: 1rem;
     line-height: 1.8;
-  }
-  .dim {
-    color: var(--offWhite);
-    opacity: 0.8;
-    font-size: 1.5rem;
-  }
-  img {
-    border: ${props => (props.show ? '25px solid rgb(237, 237, 237)' : '')};
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+
+    .dim {
+      color: var(--offWhite);
+      opacity: 0.8;
+      font-size: 1.5rem;
+    }
+
+    ${mediaQuery('sm')`
+      font-size: 1.6rem;
+      line-height: 1.8;
+      .dim {
+        font-size: 1.4rem;
+      }
+    `};
   }
 `;
 
 const SanityImageBox = ({
   image,
   name,
-  show = false,
-  dimensions = {},
   alt,
   idx,
-}) => (
-  <Box show={show}>
-    <GatsbyImage
-      image={image.asset.gatsbyImageData}
-      title={alt}
-      alt={alt}
-      idx={idx}
-      loading="eager"
-    />
+  mql = false,
+  show = false,
+  dimensions = {},
+}) => {
+  const trigger = mql?.navChange;
+  return (
+    <Box>
+      <GatsbyImage
+        image={image.asset.gatsbyImageData}
+        title={alt}
+        alt={alt}
+        idx={idx}
+        loading="eager"
+        imgStyle={show && { border: `${trigger ? '12px' : '18px'} solid #fff` }}
+      />
 
-    {name && (
-      <p>
-        {name}{' '}
-        <span className="dim">
-          {dimensions ? `  ${dimensions.height}x${dimensions.width}cm` : ``}
-        </span>
-      </p>
-    )}
-  </Box>
-);
+      {name && (
+        <p>
+          {name}{' '}
+          <span className="dim">
+            {dimensions ? `  ${dimensions.height}x${dimensions.width}cm` : ``}
+          </span>
+        </p>
+      )}
+    </Box>
+  );
+};
 
 export default SanityImageBox;

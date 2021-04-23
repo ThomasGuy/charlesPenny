@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaQuery } from './mediaQuery';
 
 // Nav styles
 export const Navbar = styled.nav`
@@ -68,6 +69,17 @@ export const NavbarNavItem = styled.div`
 `;
 
 export const SmallBanner = styled.h2`
-  font-size: 2.4rem;
-  margin: 0 auto 0 2rem;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+
+  ${mediaQuery('xs')`
+  padding-left: 1rem;
+  font-size: 2rem
+  `};
+
+  ${mediaQuery('sm')`
+    padding-left: 2rem;
+    font-size: 2.4rem;
+  `};
 `;

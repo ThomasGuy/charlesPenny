@@ -14,7 +14,7 @@ module.exports = {
   siteMetadata: {
     title: 'Charles Penny Gallery',
     siteURL: 'https://charles.penny.co.uk',
-    description: 'Gallery of pictures by Charles Penny',
+    description: 'Art works by Charles Penny',
     instagram: 'http://www.instagram.com/charles.penny',
   },
   plugins: [

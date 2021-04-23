@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 // import 'normalize.css';
 import styled from 'styled-components';
-
+import { BreakpointProvider } from '../hooks/useBreakpoint';
 import Footer from './Footer';
 import Nav from './Nav';
 import { mediaQuery } from '../styles/mediaQuery';
 import { GlobalStyles } from '../styles';
+import SEO from './SEO';
 
 const ContentStyles = styled.div`
   background-color: var(--charles);
@@ -16,7 +17,7 @@ const ContentStyles = styled.div`
   margin: 0 auto;
 `;
 
-const Inner = styled.div`
+const Main = styled.div`
   padding: 0 0.7rem;
 
   ${mediaQuery('xs')`
@@ -32,15 +33,34 @@ const Inner = styled.div`
   `};
 `;
 
-const Layout = ({ children }) => (
-  <>
-    <GlobalStyles />
-    <ContentStyles>
-      <Nav />
-      <Inner>{children}</Inner>
-      <Footer />
-    </ContentStyles>
-  </>
-);
+// these should maybe be synced up with mediaQueries
+const queries = {
+  or: '(orientation: portrait)', // we can check orientation also
+  navChange: '(max-width: 810px)',
+};
+
+export const TitleContext = createContext({
+  title: 'Sport',
+  setTitle: () => {},
+});
+
+const Layout = ({ children, siteTitle, siteDescription }) => {
+  const [title, setTitle] = useState(siteTitle);
+  return (
+    <>
+      <GlobalStyles />
+      <SEO title={siteTitle} description={siteDescription} />
+      <ContentStyles>
+        <BreakpointProvider queries={queries}>
+          <Nav title={title} />
+          <TitleContext.Provider value={{ title, setTitle }}>
+            <Main>{children}</Main>
+          </TitleContext.Provider>
+        </BreakpointProvider>
+        <Footer />
+      </ContentStyles>
+    </>
+  );
+};
 
 export default Layout;

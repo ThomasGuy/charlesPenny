@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import MediaQuery from 'react-responsive';
 
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
@@ -16,6 +15,7 @@ import {
 } from '../styles';
 import NavCollapse from './NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
+import { useBreakpoint } from '../hooks/useBreakpoint';
 
 function NavSmall({ children }) {
   return (
@@ -77,12 +77,13 @@ function NavLink({ icon }) {
   );
 }
 
-const Nav = () => {
+const Nav = ({ title }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const linkref = useRef(open);
   const handler = useCallback(() => setOpen(false), [setOpen]);
   useOnClickOutside(dropdownRef, linkref, handler);
+  const mql = useBreakpoint();
 
   const { category } = useStaticQuery(graphql`
     query {
@@ -100,29 +101,9 @@ const Nav = () => {
 
   return (
     <Fixed>
-      <MediaQuery minWidth={668}>
-        <Banner>Charles Penny</Banner>
-        <NavStyle>
-          <StyledLink to="/" activeClassName="active">
-            Home
-          </StyledLink>
-          {category.nodes.map(cat => (
-            <StyledLink
-              to={`/category/${cat.slug.current}`}
-              key={cat._id}
-              activeClassName="active">
-              {cat.name}
-            </StyledLink>
-          ))}
-          <StyledLink to="/contact" key="contact" activeClassName="active">
-            Contact
-          </StyledLink>
-        </NavStyle>
-      </MediaQuery>
-
-      <MediaQuery maxWidth={667}>
+      {mql.navChange ? (
         <NavSmall>
-          <SmallBanner>Charles Penny</SmallBanner>
+          <SmallBanner>{title}</SmallBanner>
           <NavLink icon={<HomeIcon />} key="Home" />
           <NavItem
             linkref={linkref}
@@ -137,7 +118,27 @@ const Nav = () => {
             />
           </NavItem>
         </NavSmall>
-      </MediaQuery>
+      ) : (
+        <>
+          <Banner>{title}</Banner>
+          <NavStyle>
+            <StyledLink to="/" activeClassName="active">
+              Home
+            </StyledLink>
+            {category.nodes.map(cat => (
+              <StyledLink
+                to={`/category/${cat.slug.current}`}
+                key={cat._id}
+                activeClassName="active">
+                {cat.name}
+              </StyledLink>
+            ))}
+            <StyledLink to="/contact" key="contact" activeClassName="active">
+              Contact
+            </StyledLink>
+          </NavStyle>
+        </>
+      )}
     </Fixed>
   );
 };

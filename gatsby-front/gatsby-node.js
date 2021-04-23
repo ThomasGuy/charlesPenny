@@ -73,6 +73,11 @@ const homePage = async (graphql, actions, reporter) => {
           }
         }
       }
+      title: site {
+        siteMetadata {
+          title
+        }
+      }
     }
   `);
 
@@ -83,6 +88,7 @@ const homePage = async (graphql, actions, reporter) => {
   }
 
   const home = result.data.home || {};
+  const { title } = result.data.title.siteMetadata;
   if (home) reporter.info('Home page created sucessfully!');
 
   createPage({
@@ -90,6 +96,7 @@ const homePage = async (graphql, actions, reporter) => {
     component: require.resolve(`./src/templates/Home.js`),
     context: {
       home,
+      title,
     },
   });
 };

@@ -7,7 +7,7 @@ export const Page = styled.div`
   max-width: 100rem;
   padding: 0 0.8rem;
 
-  ${mediaQuery('md')`
+  ${mediaQuery('navChange')`
     margin-top: 18rem;
   `};
 `;
@@ -25,21 +25,22 @@ export const Title = styled.div`
     font-weight: 400;
   }
 
-  @media screen and (min-width: 368px) {
+  ${mediaQuery('xs')`
     font-size: 1.5rem;
     font-weight: 600;
-  }
-  @media screen and (min-width: 568px) {
+  `};
+
+  ${mediaQuery('sm')`
     font-size: 1.9rem;
     #cert {
       font-size: 1rem;
     }
-  }
+  `};
 
-  @media screen and (min-width: 768px) {
+  ${mediaQuery('md')`
     font-size: 2.5rem;
     font-weight: 900;
-  }
+  `};
 `;
 
 export const Row = styled.div`

@@ -1,13 +1,21 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 
 import SanityImageBox from '../components/SanityImageBox';
 import { mediaQuery } from '../styles/mediaQuery';
 import { Modal } from '../components/SimpleModal';
 import SEO from '../components/SEO';
+import { useBreakpoint } from '../hooks/useBreakpoint';
+import { TitleContext } from '../components/Layout';
 
 const GalleryLayout = styled.div`
   margin: 0 auto;
@@ -24,6 +32,9 @@ const GalleryLayout = styled.div`
 
   ${mediaQuery('md')`
     grid-template-columns: 1fr 1fr 1fr;
+  `};
+
+  ${mediaQuery('navChange')`
     margin-top: 18rem;
   `};
 
@@ -33,10 +44,15 @@ const GalleryLayout = styled.div`
 `;
 
 const Gallery = ({ data }) => {
+  const { setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
-  const title = data.title.slug.current;
+  const mql = useBreakpoint();
+
+  useEffect(() => {
+    setTitle(data.title.name);
+  }, [setTitle, data.title.name]);
 
   const propsArray = data.pics.edges.map(({ node }) => {
     const { image, name, id, dimensions, category } = node;
@@ -57,7 +73,7 @@ const Gallery = ({ data }) => {
 
   const pictures = sorted.map((props, idx) => {
     const { aspectRatio, ...others } = props;
-    return <SanityImageBox idx={idx} {...others} />;
+    return <SanityImageBox idx={idx} mql={mql} {...others} />;
   });
 
   const setIndex = useCallback(
@@ -91,11 +107,12 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
+      <SEO title={data.title.name} />
       {pictures.map(pic => {
         const { image, id } = pic.props;
         return (
           <div key={id}>
-            <SEO title={title} imageSrc={image.asset.url} />
+            <SEO imageSrc={image.asset.url} />
             {pic}
           </div>
         );
@@ -144,9 +161,7 @@ export const pageQuery = graphql`
       }
     }
     title: sanityCategory(slug: { current: { eq: $slug } }) {
-      slug {
-        current
-      }
+      name
     }
   }
 `;

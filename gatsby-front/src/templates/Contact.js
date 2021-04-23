@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Grid, Row, Col, Bio, Image } from '../styles';
 import SEO from '../components/SEO';
+import { TitleContext } from '../components/Layout';
 
 const Contact = ({ pageContext }) => {
+  const { setTitle } = useContext(TitleContext);
   const {
     name,
     biography,
@@ -14,6 +16,10 @@ const Contact = ({ pageContext }) => {
     social,
     links,
   } = pageContext.contact;
+
+  useEffect(() => {
+    setTitle(name);
+  }, [setTitle, name]);
 
   function makeId(slug, idx) {
     return `${slug}-${idx}`;

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Bio, UpComing } from '../styles';
 import SEO from '../components/SEO';
+import { TitleContext } from '../components/Layout';
 
 const Home = ({ pageContext }) => {
+  const { setTitle } = useContext(TitleContext);
   const { events, biography, image } = pageContext.home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
+
+  useEffect(() => {
+    setTitle(pageContext.title);
+  }, [pageContext.title, setTitle]);
 
   return (
     <Page>

@@ -2,6 +2,7 @@ const breakpoints = {
   xs: 360,
   sm: 480,
   md: 668,
+  navChange: 810,
   lg: 968,
   xl: 1180,
 };
