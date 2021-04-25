@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Button, ModalBox, ModalWrapper } from './modalStyle';
 
 export function Modal({ onCloseRequest, children }) {
@@ -64,3 +65,13 @@ function SimpleModal({ children, buttonLabel = 'Open Modal' }) {
 }
 
 export default SimpleModal;
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  onCloseRequest: PropTypes.func,
+};
+
+SimpleModal.propTypes = {
+  children: PropTypes.node,
+  buttonLabel: PropTypes.string,
+};

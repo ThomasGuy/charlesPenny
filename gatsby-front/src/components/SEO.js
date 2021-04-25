@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { PropTypes } from 'prop-types';
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import { Helmet } from 'react-helmet';
 
@@ -51,6 +51,9 @@ export default SEO;
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  imageSrc: PropTypes.string,
+  children: PropTypes.node,
+  location: PropTypes.any,
 };
 
 SEO.defaultProps = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import CalendarIcon from '../assets/svg/calendar3.svg';
 import { mediaQuery } from '../styles/mediaQuery';
 
@@ -109,3 +110,8 @@ export default function Events({ events }) {
     </Container>
   );
 }
+
+Events.propTypes = {
+  evt: PropTypes.any,
+  events: PropTypes.array,
+};

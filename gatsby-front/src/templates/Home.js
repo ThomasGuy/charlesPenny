@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Bio, UpComing } from '../styles';
@@ -31,3 +32,8 @@ const Home = ({ pageContext }) => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  title: PropTypes.string,
+  pageContext: PropTypes.object,
+};

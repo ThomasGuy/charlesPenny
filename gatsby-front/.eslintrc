@@ -3,7 +3,7 @@
   "rules": {
     "prettier/prettier": "error",
     "array-callback-return": 0,
-    "react/prop-types": 0,
+    "react/prop-types": 1,
     "react/jsx-props-no-spreading": 0,
     "import/prefer-default-export": 0
   }

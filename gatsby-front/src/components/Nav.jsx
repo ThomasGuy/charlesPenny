@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-
+import PropTypes from 'prop-types';
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
 import {
@@ -144,3 +144,27 @@ const Nav = ({ title }) => {
 };
 
 export default Nav;
+
+NavItem.propTypes = {
+  open: PropTypes.bool,
+  setOpen: PropTypes.func,
+  children: PropTypes.node,
+  icon: PropTypes.element,
+  linkRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.element }),
+    PropTypes.shape({ current: PropTypes.func }),
+  ]),
+};
+
+NavLink.propTypes = {
+  icon: PropTypes.element,
+};
+
+NavSmall.propTypes = {
+  children: PropTypes.node,
+};
+
+Nav.propTypes = {
+  title: PropTypes.string,
+};

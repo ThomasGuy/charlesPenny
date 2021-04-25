@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
-import { graphql } from 'gatsby';
 import React, {
   useCallback,
   useContext,
@@ -8,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import SanityImageBox from '../components/SanityImageBox';

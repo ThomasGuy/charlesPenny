@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 
@@ -107,3 +108,9 @@ const NavCollape = ({ list, dropref, setOpen }) => {
 };
 
 export default NavCollape;
+
+NavCollape.propTypes = {
+  dropref: PropTypes.any,
+  setOpen: PropTypes.func,
+  list: PropTypes.array,
+};

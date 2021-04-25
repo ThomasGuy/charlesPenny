@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FaEnvelope } from 'react-icons/fa';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Grid, Row, Col, Bio, Image } from '../styles';
@@ -134,3 +135,7 @@ const Contact = ({ pageContext }) => {
 };
 
 export default Contact;
+
+Contact.propTypes = {
+  pageContext: PropTypes.object,
+};

@@ -47,6 +47,8 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalBox = styled.div`
+  display: grid;
+  place-content: center center;
   width: 100%;
   background-color: #1a1a1a;
   padding: 1rem;

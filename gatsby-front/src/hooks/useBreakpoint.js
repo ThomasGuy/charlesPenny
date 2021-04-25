@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const defaultValue = {};
 
@@ -14,7 +15,9 @@ const BreakpointProvider = ({ children, queries }) => {
 
     const handleQueryListener = () => {
       const updatedMatches = keys.reduce((acc, media) => {
-        acc[media] = !!(mediaQueryLists[media] && mediaQueryLists[media].matches);
+        acc[media] = !!(
+          mediaQueryLists[media] && mediaQueryLists[media].matches
+        );
         return acc;
       }, {});
       setQueryMatch(updatedMatches);
@@ -50,7 +53,11 @@ const BreakpointProvider = ({ children, queries }) => {
     };
   }, [queries]);
 
-  return <BreakpointContext.Provider value={queryMatch}>{children}</BreakpointContext.Provider>;
+  return (
+    <BreakpointContext.Provider value={queryMatch}>
+      {children}
+    </BreakpointContext.Provider>
+  );
 };
 
 function useBreakpoint() {
@@ -62,4 +69,8 @@ function useBreakpoint() {
 }
 
 export { useBreakpoint, BreakpointProvider };
-console.log();
+
+BreakpointProvider.propTypes = {
+  children: PropTypes.node,
+  queries: PropTypes.object,
+};

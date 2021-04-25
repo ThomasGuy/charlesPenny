@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 // import 'normalize.css';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { BreakpointProvider } from '../hooks/useBreakpoint';
 import Footer from './Footer';
 import Nav from './Nav';
@@ -64,3 +65,9 @@ const Layout = ({ children, siteTitle, siteDescription }) => {
 };
 
 export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.node,
+  siteTitle: PropTypes.string,
+  siteDescription: PropTypes.string,
+};
