@@ -120,11 +120,11 @@ export const Bio = styled.p`
   line-height: 1.4;
   padding: 0 0.5rem;
 
-  @media screen and (min-width: 480px) {
+  ${mediaQuery('sm')`
     font-size: 2rem;
     line-height: 1.5;
     padding: 0 1rem;
-  }
+  `};
 `;
 
 export const Image = styled.div`

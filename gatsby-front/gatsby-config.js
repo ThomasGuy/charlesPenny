@@ -13,8 +13,9 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   siteMetadata: {
     title: 'Charles Penny Gallery',
-    siteURL: 'https://charles.penny.co.uk',
+    siteURL: 'https://charlespenny.co.uk',
     description: 'Art works by Charles Penny',
+    author: 'Thomas Guy <twguy.weddev@gmail.com>',
     instagram: 'http://www.instagram.com/charles.penny',
   },
   plugins: [

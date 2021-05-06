@@ -10,6 +10,7 @@ const Home = ({ pageContext }) => {
   const { setTitle } = useContext(TitleContext);
   const { events, biography, image } = pageContext.home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
+  console.log({ events });
 
   useEffect(() => {
     setTitle(pageContext.title);
@@ -25,8 +26,12 @@ const Home = ({ pageContext }) => {
         title="Charles Penny"
       />
       {bio}
-      <UpComing>Exhibitions and Events</UpComing>
-      <Events events={events} />
+      {events && events.length > 0 && (
+        <>
+          <UpComing>Exhibitions and Events</UpComing>
+          <Events events={events} />
+        </>
+      )}
     </Page>
   );
 };
