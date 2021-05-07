@@ -81,7 +81,7 @@ const Contact = ({ pageContext }) => {
                 <ul>
                   {links.map((link, idx) => (
                     <li key={makeId('link', idx)}>
-                      <a href={`${link.url}`}>{link.name}</a>
+                      <a href={`${link.href}`}>{link.name}</a>
                     </li>
                   ))}
                 </ul>
