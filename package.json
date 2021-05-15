@@ -1,0 +1,27 @@
+{
+  "name": "charles-penny-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A gallery Gatsby website with Sannityio cms",
+  "main": "gatsby serve",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasGuy/charlesPenny.git"
+  },
+  "keywords": [
+    "Gatsby",
+    "Sanityio",
+    "Gallery",
+    "Painter",
+    "Artist"
+  ],
+  "author": "Thomas Guy <twguy.webdev@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomasGuy/charlesPenny/issues"
+  },
+  "homepage": "https://github.com/ThomasGuy/charlesPenny#readme"
+}
