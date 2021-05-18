@@ -63,7 +63,7 @@ export default {
     {
       title: 'Category',
       name: 'category',
-      by: [{ field: 'category', direction: 'desc' }],
+      by: [{ field: 'category.name', direction: 'desc' }],
     },
     {
       title: 'Name',
