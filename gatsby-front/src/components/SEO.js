@@ -10,7 +10,7 @@ function SEO({ children, location, description, title, imageSrc }) {
       site {
         siteMetadata {
           title
-          siteURL
+          siteUrl
           description
           instagram
         }
