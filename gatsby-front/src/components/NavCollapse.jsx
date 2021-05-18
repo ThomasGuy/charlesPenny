@@ -49,33 +49,35 @@ const NavCollape = ({ list, dropref, setOpen }) => {
     [setOpen]
   );
 
-  // const handleTouchStart = useCallback(
-  //   evt => {
-  //     if (evt.target.nodeName !== 'A') {
-  //       return;
-  //     }
-  //     setOpen(false);
-  //   },
-  //   [setOpen]
-  // );
+  const handleTouchStart = useCallback(
+    evt => {
+      if (evt.target.nodeName !== 'A') {
+        return;
+      }
+      setOpen(false);
+    },
+    [setOpen]
+  );
 
-  // const handleKey = useCallback(
-  //   evt => {
-  //     if (evt.target.nodeName !== 'A') {
-  //       return;
-  //     }
-  //     // keyCode = 9 "tab"
-  //     if (evt.keyCode === 9) {
-  //       setOpen(state => !state);
-  //     }
-  //   },
-  //   [setOpen]
-  // );
+  const handleKey = useCallback(
+    evt => {
+      if (evt.target.nodeName !== 'A') {
+        return;
+      }
+      // keyCode = 9 "tab"
+      if (evt.keyCode === 9) {
+        setOpen(state => !state);
+      }
+    },
+    [setOpen]
+  );
 
   const categories = list.map((cat, idx) => (
-    <MenuItemStyled key={cat._id} nav-index={idx + 1}>
+    <MenuItemStyled key={cat._id}>
       <Link
+        tab-index={idx + 1}
         to={`/category/${cat.slug.current}`}
+        role="menuitem"
         activeStyle={{ color: 'yellow' }}>
         {cat.name}
       </Link>
@@ -87,7 +89,8 @@ const NavCollape = ({ list, dropref, setOpen }) => {
     <div
       ref={dropref}
       onClick={handleClick}
-      // onTouchStart={handleTouchStart}
+      onKeyUp={handleKey}
+      onTouchStart={handleTouchStart}
       role="button"
       tabIndex={0}>
       <DropDown
@@ -98,7 +101,10 @@ const NavCollape = ({ list, dropref, setOpen }) => {
         key="subject">
         {categories}
         <MenuItemStyled key="contact" id="contact">
-          <Link to="/contact" activeStyle={{ color: 'yellow', opacity: '1' }}>
+          <Link
+            to="/contact"
+            role="menuitem"
+            activeStyle={{ color: 'yellow', opacity: '1' }}>
             Contact
           </Link>
         </MenuItemStyled>

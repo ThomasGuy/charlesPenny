@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -58,7 +59,8 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
         ref={linkref}
         onClick={() => listener}
         onKeyDown={handleKey}
-        role="button"
+        aria-label="menu"
+        role="menu"
         tabIndex={0}>
         {icon}
       </div>
@@ -70,7 +72,7 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
 function NavLink({ icon }) {
   return (
     <NavbarNavItem>
-      <Link className="icon-button" to="/">
+      <Link className="icon-button" aria-label="Link homepage" to="/">
         {icon}
       </Link>
     </NavbarNavItem>
@@ -104,14 +106,18 @@ const Nav = ({ title }) => {
       {mql.navChange ? (
         <NavSmall>
           <SmallBanner>{title}</SmallBanner>
-          <NavLink icon={<HomeIcon />} key="Home" />
+          <NavLink icon={<HomeIcon />} aria-label="Home page" key="Home" />
           <NavItem
             linkref={linkref}
+            aria-label="menu"
+            aria-expanded="false"
+            tab-index={0}
             icon={<BurgerIcon />}
             key="burger"
             open={open}
             setOpen={setOpen}>
             <NavCollapse
+              aria-expanded="true"
               list={category.nodes}
               dropref={dropdownRef}
               setOpen={setOpen}
@@ -150,11 +156,6 @@ NavItem.propTypes = {
   setOpen: PropTypes.func,
   children: PropTypes.node,
   icon: PropTypes.element,
-  linkRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.element }),
-    PropTypes.shape({ current: PropTypes.func }),
-  ]),
 };
 
 NavLink.propTypes = {
