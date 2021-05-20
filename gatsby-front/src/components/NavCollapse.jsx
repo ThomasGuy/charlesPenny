@@ -49,15 +49,15 @@ const NavCollape = ({ list, dropref, setOpen }) => {
     [setOpen]
   );
 
-  const handleTouchStart = useCallback(
-    evt => {
-      if (evt.target.nodeName !== 'A') {
-        return;
-      }
-      setOpen(false);
-    },
-    [setOpen]
-  );
+  // const handleTouchStart = useCallback(
+  //   evt => {
+  //     if (evt.target.nodeName !== 'A') {
+  //       return;
+  //     }
+  //     setOpen(false);
+  //   },
+  //   [setOpen]
+  // );
 
   const handleKey = useCallback(
     evt => {
@@ -90,7 +90,7 @@ const NavCollape = ({ list, dropref, setOpen }) => {
       ref={dropref}
       onClick={handleClick}
       onKeyUp={handleKey}
-      onTouchStart={handleTouchStart}
+      // onTouchStart={handleTouchStart}
       role="button"
       tabIndex={0}>
       <DropDown
