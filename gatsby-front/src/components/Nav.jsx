@@ -101,10 +101,12 @@ const Nav = ({ title }) => {
     }
   `);
 
+  console.log('navchange', mql.navChange);
+
   return (
     <Fixed>
       {mql.navChange ? (
-        <SmallBanner>
+        <>
           <Banner>{title}</Banner>
           <NavStyle>
             <StyledLink to="/" activeClassName="active">
@@ -122,7 +124,7 @@ const Nav = ({ title }) => {
               Contact
             </StyledLink>
           </NavStyle>
-        </SmallBanner>
+        </>
       ) : (
         <NavSmall>
           <SmallBanner>{title}</SmallBanner>
