@@ -37,7 +37,7 @@ const Main = styled.div`
 // these should maybe be synced up with mediaQueries
 const queries = {
   or: '(orientation: portrait)', // we can check orientation also
-  navChange: '(max-width: 810px)',
+  navChange: '(min-width: 810px)',
 };
 
 export const TitleContext = createContext({

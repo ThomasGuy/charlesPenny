@@ -10,7 +10,6 @@ const Home = ({ pageContext }) => {
   const { setTitle } = useContext(TitleContext);
   const { events, biography, image } = pageContext.home;
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
-  console.log({ events });
 
   useEffect(() => {
     setTitle(pageContext.title);
@@ -22,6 +21,7 @@ const Home = ({ pageContext }) => {
       <SanityImageBox
         image={image}
         name=""
+        idx={0}
         alt="Charles Penny"
         title="Charles Penny"
       />

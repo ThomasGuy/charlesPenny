@@ -8,15 +8,8 @@ import { TitleContext } from '../components/Layout';
 
 const Contact = ({ pageContext }) => {
   const { setTitle } = useContext(TitleContext);
-  const {
-    name,
-    biography,
-    email,
-    image,
-    mug,
-    social,
-    links,
-  } = pageContext.contact;
+  const { name, biography, email, image, mug, social, links } =
+    pageContext.contact;
 
   useEffect(() => {
     setTitle(name);
@@ -35,6 +28,7 @@ const Contact = ({ pageContext }) => {
           <SanityImageBox
             image={image}
             alt={name}
+            idx={0}
             title="Charles Penny"
             name=""
           />
@@ -46,6 +40,7 @@ const Contact = ({ pageContext }) => {
             <SanityImageBox
               name=""
               alt="Charles Penny"
+              idx={0}
               title="Charles Penny"
               image={mug}
             />

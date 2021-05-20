@@ -104,6 +104,26 @@ const Nav = ({ title }) => {
   return (
     <Fixed>
       {mql.navChange ? (
+        <SmallBanner>
+          <Banner>{title}</Banner>
+          <NavStyle>
+            <StyledLink to="/" activeClassName="active">
+              Home
+            </StyledLink>
+            {category.nodes.map(cat => (
+              <StyledLink
+                to={`/category/${cat.slug.current}`}
+                key={cat._id}
+                activeClassName="active">
+                {cat.name}
+              </StyledLink>
+            ))}
+            <StyledLink to="/contact" key="contact" activeClassName="active">
+              Contact
+            </StyledLink>
+          </NavStyle>
+        </SmallBanner>
+      ) : (
         <NavSmall>
           <SmallBanner>{title}</SmallBanner>
           <NavLink icon={<HomeIcon />} aria-label="Home page" key="Home" />
@@ -124,26 +144,6 @@ const Nav = ({ title }) => {
             />
           </NavItem>
         </NavSmall>
-      ) : (
-        <>
-          <Banner>{title}</Banner>
-          <NavStyle>
-            <StyledLink to="/" activeClassName="active">
-              Home
-            </StyledLink>
-            {category.nodes.map(cat => (
-              <StyledLink
-                to={`/category/${cat.slug.current}`}
-                key={cat._id}
-                activeClassName="active">
-                {cat.name}
-              </StyledLink>
-            ))}
-            <StyledLink to="/contact" key="contact" activeClassName="active">
-              Contact
-            </StyledLink>
-          </NavStyle>
-        </>
       )}
     </Fixed>
   );

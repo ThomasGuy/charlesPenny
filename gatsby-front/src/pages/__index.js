@@ -84,6 +84,7 @@ const Home = () => {
       <SanityImageBox
         image={image}
         name=""
+        idx={0}
         alt="Charles Penny"
         title="Charles Penny"
       />

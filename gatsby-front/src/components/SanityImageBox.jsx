@@ -39,7 +39,7 @@ const SanityImageBox = ({
   image,
   name,
   alt,
-  idx,
+  idx = 0,
   mql = null,
   show = false,
   dimensions = {},
