@@ -1,18 +1,12 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import SanityImageBox from '../components/SanityImageBox';
 import { mediaQuery } from '../styles/mediaQuery';
-import { Modal } from '../components/SimpleModal';
+import { Modal } from '../components/_SimpleModal';
 import SEO from '../components/SEO';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 import { TitleContext } from '../components/Layout';
@@ -46,15 +40,15 @@ const GalleryLayout = styled.div`
 const Gallery = ({ data }) => {
   const { setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
-  const [index, _setIndex] = useState(-1);
-  const indexRef = useRef(index);
+  const [index, setIndex] = useState(0);
+
   const mql = useBreakpoint();
 
   useEffect(() => {
     setTitle(data.title.name);
   }, [setTitle, data.title.name]);
 
-  const propsArray = data.pics.edges.map(({ node }) => {
+  const imgProps = data.pics.edges.map(({ node }) => {
     const { image, name, id, dimensions, category } = node;
     return {
       image,
@@ -67,7 +61,7 @@ const Gallery = ({ data }) => {
     };
   });
 
-  const sorted = propsArray.sort(function (p1, p2) {
+  const sorted = imgProps.sort(function (p1, p2) {
     return p2.aspectRatio - p1.aspectRatio;
   });
 
@@ -76,15 +70,15 @@ const Gallery = ({ data }) => {
     return <SanityImageBox idx={idx} mql={mql} {...others} />;
   });
 
-  const setIndex = useCallback(
-    idx => {
-      idx += propsArray.length;
-      idx %= propsArray.length;
-      indexRef.current = idx;
-      _setIndex(idx);
-    },
-    [propsArray.length]
-  );
+  // const setIndex = useCallback(
+  //   idx => {
+  //     idx += imgProps.length;
+  //     idx %= imgProps.length;
+  //     indexRef.current = idx;
+  //     _setIndex(idx);
+  //   },
+  //   [imgProps.length]
+  // );
 
   const clickHandler = useCallback(
     evt => {
@@ -118,7 +112,11 @@ const Gallery = ({ data }) => {
         );
       })}
       {openModal && (
-        <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
+        <Modal
+          onCloseRequest={() => setOpen(false)}
+          index={index}
+          imgProps={imgProps}
+        />
       )}
     </GalleryLayout>
   );
