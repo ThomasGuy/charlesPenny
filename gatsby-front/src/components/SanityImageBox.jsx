@@ -7,7 +7,7 @@ import { mediaQuery } from '../styles/mediaQuery';
 const Box = styled.div`
   width: 100%;
   height: auto;
-  margin: o auto;
+  /* margin: 0 auto; */
 
   p {
     text-align: center;
