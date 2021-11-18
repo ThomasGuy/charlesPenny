@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { animated, useSpring, config } from 'react-spring';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { SoldTagModal } from '../../styles';
 
@@ -12,7 +13,7 @@ export const ModalBox = styled.div`
   background-color: #131111;
 `;
 
-const Box = styled.div`
+const Box = styled(animated.div)`
   max-height: 760px;
   width: auto;
   padding: 0 3rem;
@@ -41,12 +42,19 @@ const Box = styled.div`
 `;
 
 export const ModalImg = props => {
-  const { image, sold, title, name, dimensions } = props;
+  const { image, sold, title, name, dimensions, id } = props;
   const caption = dimensions
     ? `${name} - ${dimensions.width}x${dimensions.height}cm`
     : `${name}`;
+
+  const api = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 200,
+    config: config.molasses,
+  });
   return (
-    <Box>
+    <Box key={id} style={api}>
       <p className="title">{title}</p>
       <GatsbyImage
         image={image.asset.gatsbyImageData}

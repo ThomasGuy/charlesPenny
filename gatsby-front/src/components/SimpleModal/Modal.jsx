@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
+// import { config, useSpring } from 'react-spring';
 import React, { useRef, useCallback, useState } from 'react';
 import { ModalBox, ModalImg } from './ModalImg';
 import { Button, ModalWrapper } from './modalStyle';
 import Next from './NextButton';
 
 export function Modal({ onCloseRequest, index, imgProps }) {
-  const modal = useRef(null);
+  // const modal = useRef(null);
   const idxRef = useRef(index);
   const [_index, _setIndex] = useState(index);
-  console.log('index', _index, idxRef);
 
   const pictures = imgProps.map(props => {
-    const { image, sold, title, name, dimensions } = props;
+    const { image, sold, title, name, dimensions, ...rest } = props;
+
     return (
       <ModalImg
         image={image}
@@ -21,6 +22,7 @@ export function Modal({ onCloseRequest, index, imgProps }) {
         title={title}
         name={name}
         dimensions={dimensions}
+        {...rest}
       />
     );
   });
@@ -35,55 +37,13 @@ export function Modal({ onCloseRequest, index, imgProps }) {
     [imgProps.length]
   );
 
-  // const handleKeyUp = useCallback(
-  //   e => {
-  //     const keys = {
-  //       27: () => {
-  //         e.preventDefault();
-  //         onCloseRequest();
-  //         document.removeEventListener('keyup', handleKeyUp, false);
-  //       },
-  //     };
-
-  //     if (keys[e.keyCode]) {
-  //       keys[e.keyCode]();
-  //     }
-  //   },
-  //   [onCloseRequest]
-  // );
-
-  // const handleOutsideClick = useCallback(
-  //   e => {
-  //     if (
-  //       modal.current &&
-  //       !modal.current.contains(e.target) &&
-  //       !btnRef.current.contains(e.target)
-  //     ) {
-  //       onCloseRequest();
-  //     }
-  //   },
-  //   [onCloseRequest],
-  // );
-
-  // useEffect(() => {
-  //   // document.addEventListener('keyup', handleKeyUp, false);
-  //   document.addEventListener('click', handleOutsideClick, false);
-
-  //   return () => {
-  //     // document.removeEventListener('keyup', handleKeyUp, false);
-  //     document.removeEventListener('click', handleOutsideClick, false);
-  //   };
-  // }, [handleOutsideClick]);
-
   return (
     <ModalWrapper>
       <Button type="button" onClick={onCloseRequest}>
         X
       </Button>
       <Next left slider={() => setIndex(idxRef.current - 1)} />
-      <ModalBox left ref={modal}>
-        {pictures[_index]}
-      </ModalBox>
+      <ModalBox>{pictures[_index]}</ModalBox>
       <Next left={false} slider={() => setIndex(idxRef.current + 1)} />
     </ModalWrapper>
   );

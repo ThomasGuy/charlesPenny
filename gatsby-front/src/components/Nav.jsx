@@ -101,7 +101,7 @@ const Nav = ({ title }) => {
     }
   `);
 
-  console.log('navchange', mql.navChange);
+  // console.log('navchange', mql.navChange);
 
   return (
     <Fixed>

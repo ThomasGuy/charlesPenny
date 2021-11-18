@@ -24,7 +24,7 @@ const NextButton = styled.div`
     border-radius: 50%;
     padding: 0rem;
     margin: 0 2rem;
-    opacity: 0.7;
+    opacity: 0.5;
     transition: filter 300ms;
     outline: none;
     border: none;
