@@ -13,7 +13,6 @@ import { GalleryLayout } from '../styles';
 const Gallery = ({ data }) => {
   const { setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
-  // const idxRef = useRef(index);
   const [index, setIndex] = useState(0);
 
   const mql = useBreakpoint();
