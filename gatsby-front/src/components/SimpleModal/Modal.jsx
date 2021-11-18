@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import React, { useRef, useCallback, useState } from 'react';
@@ -9,15 +10,16 @@ export function Modal({ onCloseRequest, index, imgProps }) {
   const modal = useRef(null);
   const idxRef = useRef(index);
   const [_index, _setIndex] = useState(index);
+  console.log('index', _index, idxRef);
 
   const pictures = imgProps.map(props => {
-    const { image, sold, subject, artist, dimensions } = props;
+    const { image, sold, title, name, dimensions } = props;
     return (
       <ModalImg
         image={image}
         sold={sold}
-        subject={subject}
-        artist={artist}
+        title={title}
+        name={name}
         dimensions={dimensions}
       />
     );
@@ -30,7 +32,7 @@ export function Modal({ onCloseRequest, index, imgProps }) {
       idxRef.current = idx;
       _setIndex(idx);
     },
-    [imgProps.length],
+    [imgProps.length]
   );
 
   // const handleKeyUp = useCallback(

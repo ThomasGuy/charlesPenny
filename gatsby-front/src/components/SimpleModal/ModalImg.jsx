@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -30,7 +31,7 @@ const Box = styled.div`
   }
   .dim {
     padding-top: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
   img {
     max-height: 740px;
@@ -40,16 +41,16 @@ const Box = styled.div`
 `;
 
 export const ModalImg = props => {
-  const { image, sold, subject, artist, dimensions } = props;
+  const { image, sold, title, name, dimensions } = props;
   const caption = dimensions
-    ? `${artist} - ${dimensions.width}x${dimensions.height}cm`
-    : `${artist}`;
+    ? `${name} - ${dimensions.width}x${dimensions.height}cm`
+    : `${name}`;
   return (
     <Box>
-      <p className="title">{subject}</p>
+      <p className="title">{title}</p>
       <GatsbyImage
         image={image.asset.gatsbyImageData}
-        alt={subject}
+        alt={name}
         title={caption}
         loading="eager"
       />

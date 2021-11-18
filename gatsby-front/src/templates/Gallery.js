@@ -2,44 +2,18 @@
 /* eslint-disable react/prop-types */
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import SanityImageBox from '../components/SanityImageBox';
-import { mediaQuery } from '../styles/mediaQuery';
-import { Modal } from '../components/_SimpleModal';
+import { Modal } from '../components/SimpleModal/Modal';
 import SEO from '../components/SEO';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 import { TitleContext } from '../components/Layout';
-
-const GalleryLayout = styled.div`
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 12rem;
-  gap: 2rem;
-
-  ${mediaQuery('sm')`
-    grid-template-columns: 1fr 1fr;
-    row-gap: 3rem;
-    column-gap: 2rem;
-  `};
-
-  ${mediaQuery('md')`
-    grid-template-columns: 1fr 1fr 1fr;
-  `};
-
-  ${mediaQuery('navChange')`
-    margin-top: 18rem;
-  `};
-
-  ${mediaQuery('lg')`
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  `};
-`;
+import { GalleryLayout } from '../styles';
 
 const Gallery = ({ data }) => {
   const { setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
+  // const idxRef = useRef(index);
   const [index, setIndex] = useState(0);
 
   const mql = useBreakpoint();
@@ -54,6 +28,7 @@ const Gallery = ({ data }) => {
       image,
       alt: name,
       name,
+      title: data.title.name,
       id,
       show: category.border,
       dimensions,
@@ -67,18 +42,8 @@ const Gallery = ({ data }) => {
 
   const pictures = sorted.map((props, idx) => {
     const { aspectRatio, ...others } = props;
-    return <SanityImageBox idx={idx} mql={mql} {...others} />;
+    return <SanityImageBox mql={mql} idx={idx} {...others} />;
   });
-
-  // const setIndex = useCallback(
-  //   idx => {
-  //     idx += imgProps.length;
-  //     idx %= imgProps.length;
-  //     indexRef.current = idx;
-  //     _setIndex(idx);
-  //   },
-  //   [imgProps.length]
-  // );
 
   const clickHandler = useCallback(
     evt => {
@@ -111,7 +76,7 @@ const Gallery = ({ data }) => {
           </div>
         );
       })}
-      {openModal && (
+      {mql.navChange && openModal && (
         <Modal
           onCloseRequest={() => setOpen(false)}
           index={index}
@@ -148,11 +113,7 @@ export const pageQuery = graphql`
                   aspectRatio
                 }
               }
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 450
-                placeholder: BLURRED
-              )
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }

@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import LeftArrow from '../icons/svg/arrow_double_left.svg';
-import RightArrow from '../icons/svg/arrow_double_right.svg';
+import LeftArrow from './icons/svg/arrow_double_left.svg';
+import RightArrow from './icons/svg/arrow_double_right.svg';
 
 const NextButton = styled.div`
   .pos-left {
@@ -50,7 +51,10 @@ const Next = ({ left, slider }) => {
 
   return (
     <NextButton>
-      <button className={`icon-button ${position}`} type="button" onClick={slider}>
+      <button
+        className={`icon-button ${position}`}
+        type="button"
+        onClick={slider}>
         {left ? <LeftArrow /> : <RightArrow />}
       </button>
     </NextButton>
