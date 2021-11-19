@@ -31,16 +31,16 @@ const Gallery = ({ data }) => {
       id,
       show: category.border,
       dimensions,
-      aspectRatio: image.asset.metadata.dimensions.aspectRatio,
+      aspectratio: image.asset.metadata.dimensions.aspectRatio,
     };
   });
 
   const sorted = imgProps.sort(function (p1, p2) {
-    return p2.aspectRatio - p1.aspectRatio;
+    return p2.aspectratio - p1.aspectratio;
   });
 
   const pictures = sorted.map((props, idx) => {
-    const { aspectRatio, ...others } = props;
+    const { aspectratio, ...others } = props;
     return <SanityImageBox mql={mql} idx={idx} {...others} />;
   });
 
@@ -49,8 +49,10 @@ const Gallery = ({ data }) => {
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
-      setIndex(parseInt(evt.target.attributes.idx.value));
-      setOpen(true);
+      if (evt.target.attributes.idx) {
+        setIndex(parseInt(evt.target.attributes.idx.value));
+        setOpen(true);
+      }
     },
     [setIndex, setOpen]
   );
