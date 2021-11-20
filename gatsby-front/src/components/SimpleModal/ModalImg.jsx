@@ -2,47 +2,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animated, useSpring, config } from 'react-spring';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import { SoldTagModal } from '../../styles';
 
-export const ModalBox = styled.div`
-  position: relative;
-  margin: 0 auto;
-  width: auto;
-  height: 850px;
-  background-color: #131111;
-`;
-
 const Box = styled(animated.div)`
-  max-height: 760px;
+  height: calc(100vh - 5rem);
   width: auto;
-  padding: 0 3rem;
-  /* display: grid;
-  justify-content: center center;
-  grid-template-rows: 2fr 12fr 1fr; */
+  padding: 1rem 5rem 0;
+
   p {
     text-align: center;
-    color: var(--offWhite);
-    opacity: 0.8;
     margin: 0;
-    margin-top: 0.3rem;
-    padding-bottom: 1rem;
-    font-size: 3rem;
-    line-height: 1.6;
-  }
-  .dim {
-    padding-top: 1rem;
+    height: 3rem;
+    padding: 0.6rem 2rem;
     font-size: 1.8rem;
+    opacity: 0.8;
+    /* line-height: 2rem; */
   }
+
   img {
-    max-height: 740px;
+    max-height: calc(100vh - 10rem);
     width: auto;
     object-fit: contain;
   }
 `;
 
-export const ModalImg = props => {
-  const { image, sold, title, name, dimensions, id } = props;
+export const ModalImg = ({ imgProp, children }) => {
+  const { sold, name, dimensions } = imgProp;
   const caption = dimensions
     ? `${name} - ${dimensions.width}x${dimensions.height}cm`
     : `${name}`;
@@ -53,16 +38,11 @@ export const ModalImg = props => {
     delay: 200,
     config: config.molasses,
   });
+
   return (
-    <Box key={id} style={api}>
-      <p className="title">{title}</p>
-      <GatsbyImage
-        image={image.asset.gatsbyImageData}
-        alt={name}
-        title={caption}
-        loading="eager"
-      />
-      <p className="dim">{caption}</p>
+    <Box style={api}>
+      {children}
+      <p>{caption}</p>
       {sold && <SoldTagModal>SOLD</SoldTagModal>}
     </Box>
   );
