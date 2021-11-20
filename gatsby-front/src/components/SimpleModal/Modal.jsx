@@ -1,25 +1,62 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
+
 import React, { useRef, useCallback, useState } from 'react';
-import { ModalBox, ModalImg } from './ModalImg';
-import { Button, ModalWrapper } from './modalStyle';
-import Next from './NextButton';
+import styled from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { ModalImg } from './ModalImg';
+import { Previous, Next } from './Buttons';
+import { CloseModal } from './CloseModal';
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  display: grid;
+  place-content: center center;
+  gap: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  opacity: 1;
+  background-color: #1a1a1a;
+`;
+
+const ModalBox = styled.div`
+  position: relative;
+  width: auto;
+  height: calc(100vh - 5rem);
+  background-color: #131111;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  color: var(--offWhite);
+  background-color: #131111;
+  opacity: 0.8;
+  padding: 0.3rem 3rem;
+  padding-bottom: 1rem;
+  margin: 0;
+  height: 5rem;
+  font-size: 3rem;
+  line-height: 1.6;
+  letter-spacing: 0.12rem;
+`;
 
 export function Modal({ onCloseRequest, index, imgProps }) {
-  const modal = useRef(null);
   const idxRef = useRef(index);
   const [_index, _setIndex] = useState(index);
-  console.log('index', _index, idxRef);
 
   const pictures = imgProps.map(props => {
-    const { image, sold, title, name, dimensions } = props;
+    const { image, sold, name, dimensions } = props;
     return (
-      <ModalImg
-        image={image}
+      <GatsbyImage
+        image={image.asset.gatsbyImageData}
+        loading="eager"
+        alt={name}
+        title={`${name} - Charles Penny`}
         sold={sold}
-        title={title}
-        name={name}
         dimensions={dimensions}
       />
     );
@@ -35,56 +72,15 @@ export function Modal({ onCloseRequest, index, imgProps }) {
     [imgProps.length]
   );
 
-  // const handleKeyUp = useCallback(
-  //   e => {
-  //     const keys = {
-  //       27: () => {
-  //         e.preventDefault();
-  //         onCloseRequest();
-  //         document.removeEventListener('keyup', handleKeyUp, false);
-  //       },
-  //     };
-
-  //     if (keys[e.keyCode]) {
-  //       keys[e.keyCode]();
-  //     }
-  //   },
-  //   [onCloseRequest]
-  // );
-
-  // const handleOutsideClick = useCallback(
-  //   e => {
-  //     if (
-  //       modal.current &&
-  //       !modal.current.contains(e.target) &&
-  //       !btnRef.current.contains(e.target)
-  //     ) {
-  //       onCloseRequest();
-  //     }
-  //   },
-  //   [onCloseRequest],
-  // );
-
-  // useEffect(() => {
-  //   // document.addEventListener('keyup', handleKeyUp, false);
-  //   document.addEventListener('click', handleOutsideClick, false);
-
-  //   return () => {
-  //     // document.removeEventListener('keyup', handleKeyUp, false);
-  //     document.removeEventListener('click', handleOutsideClick, false);
-  //   };
-  // }, [handleOutsideClick]);
-
   return (
     <ModalWrapper>
-      <Button type="button" onClick={onCloseRequest}>
-        X
-      </Button>
-      <Next left slider={() => setIndex(idxRef.current - 1)} />
-      <ModalBox left ref={modal}>
-        {pictures[_index]}
+      <Title>{imgProps[_index].title}</Title>
+      <CloseModal close={() => onCloseRequest()} />
+      <Previous slider={() => setIndex(idxRef.current - 1)} />
+      <ModalBox>
+        <ModalImg imgProp={imgProps[_index]}>{pictures[_index]}</ModalImg>
       </ModalBox>
-      <Next left={false} slider={() => setIndex(idxRef.current + 1)} />
+      <Next slider={() => setIndex(idxRef.current + 1)} />
     </ModalWrapper>
   );
 }

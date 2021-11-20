@@ -112,7 +112,7 @@ export const pageQuery = graphql`
                   aspectRatio
                 }
               }
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: BLURRED, height: 800)
             }
           }
         }
