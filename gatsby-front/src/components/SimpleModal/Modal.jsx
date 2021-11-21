@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { ModalImg } from './ModalImg';
@@ -70,6 +70,22 @@ export function Modal({ onCloseRequest, index, imgProps }) {
     },
     [imgProps.length]
   );
+
+  const handleKeypress = useCallback(
+    evt => {
+      if (evt.keyCode === 39) setIndex(idxRef.current + 1);
+      if (evt.keyCode === 37) setIndex(idxRef.current - 1);
+    },
+    [setIndex]
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeypress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeypress);
+    };
+  }, [handleKeypress]);
 
   return (
     <ModalWrapper>
