@@ -63,10 +63,10 @@ typings/
 # gatsby files
 .cache/
 public/
+gatsby-front/public/
 .env
 test.css
 
 # sanity files
 sanity-backend/dist/
-gatsby-front/public/
 dist
