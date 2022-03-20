@@ -15,7 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.13.3",
+    "babel-plugin-styled-components": "^2.0.6",
     "dotenv": "^8.6.0",
     "framer-motion": "^4.1.17",
     "gatsby": "^4.10.1",
