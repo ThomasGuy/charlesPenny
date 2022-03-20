@@ -15,7 +15,7 @@ export default {
             title: 'Website',
             apiId: '926bac00-69f9-4580-a94a-baee09204bde',
             buildHookId: 'https://api.netlify.com/build_hooks/623748e9e420996f63b7b89b',
-            name: 'practical-brahmagupta-6ca006',
+            name: 'charles-penny-gallery',
             // url: 'https://my-sanity-deployment.com',
           }
         ],
