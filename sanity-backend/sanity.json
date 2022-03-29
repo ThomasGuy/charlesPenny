@@ -3,7 +3,7 @@
   "api": {
     "projectId": "i1uips1n",
     "dataset": "production",
-    "apiVersion": "2021-04-01"
+    "apiVersion": "2022-03-29"
   },
   "project": {
     "name": "charles-penny"
@@ -15,7 +15,6 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/dashboard",
-    "dashboard-widget-gatsby",
     "dashboard-widget-netlify"
   ],
   "env": {

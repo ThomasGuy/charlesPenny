@@ -13,10 +13,11 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   siteMetadata: {
     title: 'Charles Penny Gallery',
-    siteUrl: 'https://charlespenny.co.uk',
+    siteUrl: 'https://charlespenny.uk',
     description: 'Art works by Charles Penny',
     author: 'Thomas Guy <twguy.weddev@gmail.com>',
     instagram: 'http://www.instagram.com/charles.penny',
+    facebook: 'https://www.facebook.com/charlespennyartist',
   },
   plugins: [
     'gatsby-plugin-robots-txt',

@@ -5,12 +5,12 @@ export default {
       title: 'Charles Penny Netify deploys',
       options: {
         sites: [
-          // {
-          //   title: 'Sanity Studio',
-          //   apiId: 'xxxxx-yyyy-zzzz-xxxx-yyyyyyyy',
-          //   buildHookId: 'xxxyyyxxxyyyyxxxyyy',
-          //   name: 'sanity-gatsby-blog-20-studio',
-          // },
+          {
+            title: 'Sanity Studio',
+            apiId: 'cb2e657e-9e6d-4944-b3c0-dada2be54740',
+            buildHookId: 'https://api.netlify.com/build_hooks/6237497405f6a751553c8de7',
+            name: 'charles-penny-sanity-studio',
+          },
           {
             title: 'Website',
             apiId: '926bac00-69f9-4580-a94a-baee09204bde',
