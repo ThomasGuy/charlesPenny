@@ -15,6 +15,7 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/dashboard",
+    "dashboard-widget-gatsby",
     "dashboard-widget-netlify"
   ],
   "env": {
