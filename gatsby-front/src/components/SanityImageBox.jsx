@@ -53,7 +53,9 @@ const SanityImageBox = ({
         alt={alt}
         idx={idx}
         loading="eager"
-        imgStyle={show && { border: `${trigger ? '12px' : '18px'} solid #fff` }}
+        imgStyle={
+          show && { border: `${trigger ? '1.2rem' : '1.8rem'} solid #fff` }
+        }
       />
 
       {name && (

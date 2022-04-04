@@ -1,3 +1,4 @@
+const path = require(`path`);
 // Log out information after a build is done
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Sport your Gatsby site has been built!`);
@@ -5,9 +6,10 @@ exports.onPostBuild = ({ reporter }) => {
 // Create pages dynamically
 const categoryPages = async (graphql, actions, reporter) => {
   const { createPage } = actions;
+  const galleryTemplate = path.resolve('./src/templates/Gallery.js');
 
   const result = await graphql(`
-    {
+    query {
       allSanityCategory {
         edges {
           node {
@@ -31,11 +33,10 @@ const categoryPages = async (graphql, actions, reporter) => {
   const catgories = (result.data.allSanityCategory || {}).edges || [];
   catgories.forEach(({ node }) => {
     const slug = node.slug.current;
-    const path = `/category/${slug}`;
 
     createPage({
-      path,
-      component: require.resolve(`./src/templates/Gallery.js`),
+      path: `/category/${slug}`,
+      component: galleryTemplate,
       context: {
         slug,
       },
@@ -45,6 +46,7 @@ const categoryPages = async (graphql, actions, reporter) => {
 
 const homePage = async (graphql, actions, reporter) => {
   const { createPage } = actions;
+  const homeTemplate = path.resolve(`./src/templates/Home.js`);
 
   const result = await graphql(`
     {
@@ -93,7 +95,7 @@ const homePage = async (graphql, actions, reporter) => {
 
   createPage({
     path: '/home/',
-    component: require.resolve(`./src/templates/Home.js`),
+    component: homeTemplate,
     context: {
       home,
       title,
@@ -103,6 +105,7 @@ const homePage = async (graphql, actions, reporter) => {
 
 const contactPage = async (graphql, actions, reporter) => {
   const { createPage } = actions;
+  const contactTemplate = path.resolve(`./src/templates/Contact.js`);
 
   const result = await graphql(`
     {
@@ -145,7 +148,7 @@ const contactPage = async (graphql, actions, reporter) => {
 
   createPage({
     path: '/contact/',
-    component: require.resolve(`./src/templates/Contact.js`),
+    component: contactTemplate,
     context: {
       contact,
     },
