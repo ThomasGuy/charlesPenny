@@ -1,25 +1,25 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 
 import SanityImageBox from '../components/SanityImageBox';
 import { Modal } from '../components/SimpleModal/Modal';
 import SEO from '../components/SEO';
 import { useBreakpoint } from '../hooks/useBreakpoint';
-import { TitleContext } from '../components/Layout';
+import { useTitleContext } from '../hooks/TitleContext';
 import { GalleryLayout } from '../styles';
 
 const Gallery = ({ data }) => {
-  const { setTitle } = useContext(TitleContext);
+  const { setPageTitle } = useTitleContext();
   const [openModal, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
   const mql = useBreakpoint();
 
   useEffect(() => {
-    setTitle(data.title.name);
-  }, [setTitle, data.title.name]);
+    setPageTitle(data.title.name);
+  }, [setPageTitle, data.title.name]);
 
   const imgProps = data.pics.edges.map(({ node }) => {
     const { image, name, id, dimensions, category } = node;
@@ -35,6 +35,7 @@ const Gallery = ({ data }) => {
     };
   });
 
+  // eslint-disable-next-line func-names
   const sorted = imgProps.sort(function (p1, p2) {
     return p2.aspectratio - p1.aspectratio;
   });
@@ -50,11 +51,11 @@ const Gallery = ({ data }) => {
         return;
       }
       if (evt.target.attributes.idx) {
-        setIndex(parseInt(evt.target.attributes.idx.value));
+        setIndex(parseInt(evt.target.attributes.idx.value, 10));
         setOpen(true);
       }
     },
-    [setIndex, setOpen]
+    [setIndex, setOpen],
   );
 
   useEffect(() => {
@@ -67,15 +68,9 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
-      <SEO title={data.title.name} />
       {pictures.map(pic => {
-        const { image, id } = pic.props;
-        return (
-          <div key={id}>
-            <SEO imageSrc={image.asset.url} />
-            {pic}
-          </div>
-        );
+        const { id } = pic.props;
+        return <div key={id}>{pic}</div>;
       })}
       {mql.navChange && openModal && (
         <Modal
@@ -92,9 +87,7 @@ export default Gallery;
 
 export const pageQuery = graphql`
   query GalleryPageQuery($slug: String!) {
-    pics: allSanityPicture(
-      filter: { category: { slug: { current: { eq: $slug } } } }
-    ) {
+    pics: allSanityPicture(filter: { category: { slug: { current: { eq: $slug } } } }) {
       edges {
         node {
           id
@@ -125,3 +118,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export const Head = () => <SEO />;

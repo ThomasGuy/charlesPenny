@@ -1,30 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import Events from '../components/Events';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Bio, UpComing } from '../styles';
 import SEO from '../components/SEO';
-import { TitleContext } from '../components/Layout';
+import { useTitleContext } from '../hooks/TitleContext';
 
 const Home = ({ pageContext }) => {
-  const { setTitle } = useContext(TitleContext);
+  const { setPageTitle } = useTitleContext();
   const { events, biography, image } = pageContext.home;
+  // eslint-disable-next-line react/no-array-index-key
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
 
   useEffect(() => {
-    setTitle(pageContext.title);
-  }, [pageContext.title, setTitle]);
+    setPageTitle(pageContext.title);
+  }, [pageContext.title, setPageTitle]);
 
   return (
     <Page>
-      <SEO title="Charles Penny home page" imageSrc={image?.asset?.url} />
-      <SanityImageBox
-        image={image}
-        name=""
-        idx={0}
-        alt="Charles Penny"
-        title="Charles Penny"
-      />
+      <SanityImageBox image={image} name="" alt="Charles Penny" title="Charles Penny" />
       {bio}
       {events && events.length > 0 && (
         <>
@@ -38,7 +31,4 @@ const Home = ({ pageContext }) => {
 
 export default Home;
 
-Home.propTypes = {
-  title: PropTypes.string,
-  pageContext: PropTypes.object,
-};
+export const Head = () => <SEO title="Charles Penny Gallery" />;

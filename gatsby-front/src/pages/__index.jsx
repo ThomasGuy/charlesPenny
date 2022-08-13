@@ -75,12 +75,11 @@ const Home = () => {
     }
   `);
 
-  const { events, biography, image } = home;
-  const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
+  const { events, biography, image, _key } = home;
+  const bio = biography.map(para => <Bio key={_key}>{para}</Bio>);
 
   return (
     <Page>
-      <SEO title="Charles Penny home page" imageSrc={image?.asset?.url} />
       <SanityImageBox
         image={image}
         name=""
@@ -96,6 +95,8 @@ const Home = () => {
 };
 
 export default Home;
+
+export const Head = () => <SEO />;
 
 // import { navigate } from '@reach/router';
 

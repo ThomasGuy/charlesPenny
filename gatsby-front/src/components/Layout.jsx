@@ -1,13 +1,11 @@
-import React, { createContext, useState } from 'react';
-// import 'normalize.css';
+import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { TitleContextProvider } from '../hooks/TitleContext';
 import { BreakpointProvider } from '../hooks/useBreakpoint';
 import Footer from './Footer';
 import Nav from './Nav';
 import { mediaQuery } from '../styles/mediaQuery';
 import { GlobalStyles } from '../styles';
-import SEO from './SEO';
 
 const ContentStyles = styled.div`
   background-color: var(--charles);
@@ -40,23 +38,21 @@ const queries = {
   navChange: '(min-width: 810px)',
 };
 
-export const TitleContext = createContext({
-  title: 'Sport',
-  setTitle: () => {},
-});
+// export const TitleContext = createContext({
+//   title: 'Sport',
+//   setTitle: () => {},
+// });
 
-const Layout = ({ children, siteTitle, siteDescription }) => {
-  const [title, setTitle] = useState(siteTitle);
+const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
-      <SEO title={siteTitle} description={siteDescription} />
       <ContentStyles>
         <BreakpointProvider queries={queries}>
-          <Nav title={title} />
-          <TitleContext.Provider value={{ title, setTitle }}>
+          <TitleContextProvider>
+            <Nav />
             <Main>{children}</Main>
-          </TitleContext.Provider>
+          </TitleContextProvider>
         </BreakpointProvider>
         <Footer />
       </ContentStyles>
@@ -65,9 +61,3 @@ const Layout = ({ children, siteTitle, siteDescription }) => {
 };
 
 export default Layout;
-
-Layout.propTypes = {
-  children: PropTypes.node,
-  siteTitle: PropTypes.string,
-  siteDescription: PropTypes.string,
-};

@@ -6,7 +6,7 @@ exports.onPostBuild = ({ reporter }) => {
 // Create pages dynamically
 const categoryPages = async (graphql, actions, reporter) => {
   const { createPage } = actions;
-  const galleryTemplate = path.resolve('./src/templates/Gallery.js');
+  const galleryTemplate = path.resolve('./src/templates/Gallery.jsx');
 
   const result = await graphql(`
     query {
@@ -46,7 +46,7 @@ const categoryPages = async (graphql, actions, reporter) => {
 
 const homePage = async (graphql, actions, reporter) => {
   const { createPage } = actions;
-  const homeTemplate = path.resolve(`./src/templates/Home.js`);
+  const homeTemplate = path.resolve(`./src/templates/Home.jsx`);
 
   const result = await graphql(`
     {
@@ -105,7 +105,7 @@ const homePage = async (graphql, actions, reporter) => {
 
 const contactPage = async (graphql, actions, reporter) => {
   const { createPage } = actions;
-  const contactTemplate = path.resolve(`./src/templates/Contact.js`);
+  const contactTemplate = path.resolve(`./src/templates/Contact.jsx`);
 
   const result = await graphql(`
     {

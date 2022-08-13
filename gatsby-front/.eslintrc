@@ -1,10 +1,18 @@
 {
-  "extends": ["wesbos"],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "rules": {
-    "prettier/prettier": "error",
-    "array-callback-return": 0,
-    "react/prop-types": 1,
+    "react/prop-types": 0,
     "react/jsx-props-no-spreading": 0,
-    "import/prefer-default-export": 0
+    "react-hooks/exhaustive-deps": 0,
+    "react/function-component-definition": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "import/prefer-default-export": 0,
+    "no-console": 1,
+    "no-undef": 0,
+    "no-underscore-dangle": "off",
+    "comma-dangle": ["off"]
   }
 }

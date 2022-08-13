@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
 import {
@@ -17,6 +16,7 @@ import {
 import NavCollapse from './NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 import { useBreakpoint } from '../hooks/useBreakpoint';
+import { useTitleContext } from '../hooks/TitleContext';
 
 function NavSmall({ children }) {
   return (
@@ -38,7 +38,7 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
         setOpen(state => !state);
       }
     },
-    [setOpen]
+    [setOpen],
   );
 
   useEffect(() => {
@@ -79,13 +79,14 @@ function NavLink({ icon }) {
   );
 }
 
-const Nav = ({ title }) => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const linkref = useRef(open);
   const handler = useCallback(() => setOpen(false), [setOpen]);
   useOnClickOutside(dropdownRef, linkref, handler);
   const mql = useBreakpoint();
+  const { title } = useTitleContext();
 
   const { category } = useStaticQuery(graphql`
     query {
@@ -153,21 +154,17 @@ const Nav = ({ title }) => {
 
 export default Nav;
 
-NavItem.propTypes = {
-  open: PropTypes.bool,
-  setOpen: PropTypes.func,
-  children: PropTypes.node,
-  icon: PropTypes.element,
-};
+// NavItem.propTypes = {
+//   open: PropTypes.bool,
+//   setOpen: PropTypes.func,
+//   children: PropTypes.node,
+//   icon: PropTypes.element,
+// };
 
-NavLink.propTypes = {
-  icon: PropTypes.element,
-};
+// NavLink.propTypes = {
+//   icon: PropTypes.element,
+// };
 
-NavSmall.propTypes = {
-  children: PropTypes.node,
-};
-
-Nav.propTypes = {
-  title: PropTypes.string,
-};
+// NavSmall.propTypes = {
+//   children: PropTypes.node,
+// };

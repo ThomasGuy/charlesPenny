@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { mediaQuery } from '../styles/mediaQuery';
@@ -53,9 +53,7 @@ const SanityImageBox = ({
         alt={alt}
         idx={idx}
         loading="eager"
-        imgStyle={
-          show && { border: `${trigger ? '1.2rem' : '1.8rem'} solid #fff` }
-        }
+        imgStyle={show && { border: `${trigger ? '1.2rem' : '1.8rem'} solid #fff` }}
       />
 
       {name && (
@@ -72,12 +70,12 @@ const SanityImageBox = ({
 
 export default SanityImageBox;
 
-SanityImageBox.propTypes = {
-  name: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  idx: PropTypes.number.isRequired,
-  show: PropTypes.bool,
-  mql: PropTypes.object,
-  image: PropTypes.object.isRequired,
-  dimensions: PropTypes.object,
-};
+// SanityImageBox.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   alt: PropTypes.string.isRequired,
+//   idx: PropTypes.number.isRequired,
+//   show: PropTypes.bool,
+//   mql: PropTypes.object,
+//   image: PropTypes.object.isRequired,
+//   dimensions: PropTypes.object,
+// };

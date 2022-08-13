@@ -1,19 +1,17 @@
-import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import SanityImageBox from '../components/SanityImageBox';
 import { Page, Grid, Row, Col, Bio, Image } from '../styles';
 import SEO from '../components/SEO';
-import { TitleContext } from '../components/Layout';
+import { useTitleContext } from '../hooks/TitleContext';
 
 const Contact = ({ pageContext }) => {
-  const { setTitle } = useContext(TitleContext);
-  const { name, biography, email, image, mug, social, links } =
-    pageContext.contact;
+  const { setPageTitle } = useTitleContext();
+  const { name, biography, email, image, mug, social, links } = pageContext.contact;
 
   useEffect(() => {
-    setTitle(name);
-  }, [setTitle, name]);
+    setPageTitle(name);
+  }, [setPageTitle]);
 
   function makeId(slug, idx) {
     return `${slug}-${idx}`;
@@ -21,10 +19,8 @@ const Contact = ({ pageContext }) => {
 
   return (
     <Page>
-      <SEO title={name} />
       <Grid>
         <Row>
-          <SEO imageSrc={image.asset.url} />
           <SanityImageBox
             image={image}
             alt={name}
@@ -35,7 +31,6 @@ const Contact = ({ pageContext }) => {
         </Row>
 
         <Row>
-          <SEO imageSrc={mug.asset.url} />
           <Image width="200px">
             <SanityImageBox
               name=""
@@ -59,9 +54,7 @@ const Contact = ({ pageContext }) => {
           <Col>
             {biography &&
               biography.length > 0 &&
-              biography.map((bio, idx) => (
-                <Bio key={makeId('bio', idx)}>{bio}</Bio>
-              ))}
+              biography.map((bio, idx) => <Bio key={makeId('bio', idx)}>{bio}</Bio>)}
           </Col>
         </Row>
 
@@ -70,7 +63,7 @@ const Contact = ({ pageContext }) => {
             {links && links.length > 0 && (
               <>
                 <p id="comment">
-                  Charles' paintings & prints can be found on the following
+                  Charles/&apos paintings & prints can be found on the following
                   websites
                 </p>
                 <ul>
@@ -131,6 +124,4 @@ const Contact = ({ pageContext }) => {
 
 export default Contact;
 
-Contact.propTypes = {
-  pageContext: PropTypes.object,
-};
+export const Head = () => <SEO />;
