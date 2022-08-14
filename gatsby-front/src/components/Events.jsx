@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import CalendarIcon from '../assets/svg/calendar3.svg';
 import { mediaQuery } from '../styles/mediaQuery';
 
@@ -86,19 +85,24 @@ const EventListItem = styled.li`
 
 export function Event({ evt }) {
   const { name, address, dates, about } = evt;
-  const { number, road, city, postcode, country } = address;
   return (
     <EventListItem>
       <Title>{name}</Title>
-      <h4>
-        <CalendarIcon /> &nbsp; {dates.start} &nbsp;&#8209;&nbsp; {dates.finish}
-      </h4>
+      {dates && (
+        <h4>
+          <CalendarIcon /> &nbsp; {dates?.start} &nbsp;&#8209;&nbsp; {dates?.finish}
+        </h4>
+      )}
       <p>{about}</p>
       <hr />
-      <p>
-        {`${number} ${road}, ${city}`}
-        {postcode && ` ${postcode}`} {country && `, ${country}`}
-      </p>
+      {address && (
+        <p>
+          {address?.number && `${address.number}`} {address?.road && ` ${address.road}`}
+          {address?.city && ` ${address.city}`}
+          {address?.postcode && `, ${address.postcode}`}
+          {address?.country && `, ${address.country}`}
+        </p>
+      )}
     </EventListItem>
   );
 }
@@ -112,6 +116,6 @@ export default function Events({ events }) {
   );
 }
 
-Events.propTypes = {
-  events: PropTypes.array,
-};
+// Events.propTypes = {
+//   events: PropTypes.array,
+// };

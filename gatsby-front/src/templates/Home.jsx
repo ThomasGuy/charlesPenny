@@ -6,10 +6,10 @@ import SEO from '../components/SEO';
 import { useTitleContext } from '../hooks/TitleContext';
 
 const Home = ({ pageContext }) => {
-  const { setPageTitle } = useTitleContext();
   const { events, biography, image } = pageContext.home;
   // eslint-disable-next-line react/no-array-index-key
   const bio = biography.map((para, idx) => <Bio key={idx}>{para}</Bio>);
+  const { setPageTitle } = useTitleContext();
 
   useEffect(() => {
     setPageTitle(pageContext.title);
@@ -31,4 +31,11 @@ const Home = ({ pageContext }) => {
 
 export default Home;
 
-export const Head = () => <SEO title="Charles Penny Gallery" />;
+export const Head = () => {
+  return (
+    <>
+      <html lang="en-GB" />
+      <SEO title="Charles Penny Gallery" />
+    </>
+  );
+};

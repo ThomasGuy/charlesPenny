@@ -12,7 +12,6 @@ export default {
       title: 'Event name',
       type: 'string',
       description: 'Links visible name',
-      validation: Rule => Rule.required(),
     },
     {
       name: 'dates',

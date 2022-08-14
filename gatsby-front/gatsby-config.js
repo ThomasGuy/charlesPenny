@@ -15,7 +15,7 @@ module.exports = {
   siteMetadata: {
     title: 'Charles Penny Gallery',
     siteUrl: 'https://charlespenny.uk',
-    description: 'Art works by Charles Penny',
+    description: 'A Gallery website of works by Charles Penny Artist',
     author: 'Thomas Guy <twguy.weddev@gmail.com>',
     instagram: 'http://www.instagram.com/charles.penny',
     facebook: 'https://www.facebook.com/charlespennyartist',
@@ -36,7 +36,6 @@ module.exports = {
         overlayDrafts: !isProd && previewEnabled,
       },
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-netlify',
   ],

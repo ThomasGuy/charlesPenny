@@ -17,7 +17,7 @@ export default {
             buildHookId: 'https://api.netlify.com/build_hooks/623748e9e420996f63b7b89b',
             name: 'charles-penny-gallery',
             // url: 'https://my-sanity-deployment.com',
-          }
+          },
         ],
       },
     },

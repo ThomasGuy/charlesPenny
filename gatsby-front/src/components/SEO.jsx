@@ -1,21 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
-function SEO({ children, location, description, title, imageSrc }) {
+function SEO({ children, location, description, title }) {
   const {
     title: siteTitle,
     description: siteDescription,
-    siteUrl,
-    image,
     author,
+    siteUrl,
+    instagram,
+    facebook,
   } = useSiteMetadata();
 
   const seo = {
     title: title || siteTitle || 'Wednesday Isolationists',
     description: description || siteDescription,
-    image: `${siteUrl}${image}`,
     url: `${siteUrl}${location?.pathname || ``}`,
+    instagram,
+    facebook,
     author,
   };
 
@@ -28,14 +30,16 @@ function SEO({ children, location, description, title, imageSrc }) {
       <meta charSet="utf-8" />
       <meta name="description" content={seo.description} />
       <meta name="author" content={seo.author} />
-      <meta name="image" content={imageSrc || seo.image} />
+      <meta name="instagram" content={seo.instagram} />
+      <meta name="facebook" content={seo.facebook} />
       <meta name="url" content={seo.url} />
       <meta property="og:url" content={seo.url} />
-      <meta property="og:image" content={imageSrc || seo.image} />
       <meta property="og:title" content={seo.title} key="ogtitle" />
       <meta property="og:site_name" content={seo.title} key="ogsitename" />
       <meta property="og:description" content={seo.description} key="ogdescription" />
       <meta property="og:author" content={seo.author} key="ogauthor" />
+      <meta property="og:instagram" content={seo.instagram} key="oginstagram" />
+      <meta property="og:facebook" content={seo.facebook} key="ogfacebook" />
       {children}
     </>
   );
@@ -43,19 +47,19 @@ function SEO({ children, location, description, title, imageSrc }) {
 
 export default SEO;
 
-SEO.defaultProps = {
-  imageSrc: PropTypes.string,
-  children: PropTypes.node,
-  location: PropTypes.any,
-  title: null,
-  description: null,
-};
+// SEO.defaultProps = {
+//   // imageSrc: PropTypes.string,
+//   children: PropTypes.node,
+//   location: PropTypes.any,
+//   title: null,
+//   description: null,
+// };
 
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  imageSrc: PropTypes.string,
-  children: PropTypes.node,
-  // eslint-disable-next-line react/forbid-prop-types
-  location: PropTypes.any,
-};
+// SEO.propTypes = {
+//   title: PropTypes.string,
+//   description: PropTypes.string,
+//   // imageSrc: PropTypes.string,
+//   children: PropTypes.node,
+//   // eslint-disable-next-line react/forbid-prop-types
+//   location: PropTypes.any,
+// };

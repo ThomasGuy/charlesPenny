@@ -119,4 +119,7 @@ export const pageQuery = graphql`
   }
 `;
 
-export const Head = () => <SEO />;
+export const Head = ({ data }) => {
+  const { name: title } = data.title;
+  return <SEO title={title} />;
+};
