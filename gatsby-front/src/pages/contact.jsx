@@ -36,7 +36,12 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => <SEO title="About Charles Penny" />;
+export const Head = ({ data }) => {
+  const { url } = data.contact.mug.asset;
+  const desc =
+    'Charles Penny is well known for his cheerful and sun filled works. He has exhibited widely in the UK, America, Japan and Morocco. His work is in many public and private collections worldwide.';
+  return <SEO title="Charles Penny About" description={desc} imageSrc={url} />;
+};
 
 const Contact = ({ data }) => {
   const { setPageTitle } = useTitleContext();

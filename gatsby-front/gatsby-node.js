@@ -30,8 +30,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const catgories = (result.data.allSanityCategory || {}).edges || [];
-  catgories.forEach(({ node }) => {
+  const categories = (result.data.allSanityCategory || {}).edges || [];
+
+  categories?.forEach(({ node }) => {
     const slug = node.slug.current;
 
     createPage({

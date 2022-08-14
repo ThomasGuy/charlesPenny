@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "NODE_ENV=production gatsby build",
+    "build": "NODE_ENV=production gatsby clean && gatsby build",
     "develop": "NODE_ENV=development gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",

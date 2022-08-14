@@ -11,6 +11,7 @@ function useSiteMetadata() {
           siteUrl
           instagram
           facebook
+          image
         }
       }
     }

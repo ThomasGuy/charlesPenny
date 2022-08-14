@@ -45,13 +45,14 @@ const Title = styled.div`
   background-color: var(--yellow);
   color: var(--black);
   font-weight: 900;
-  line-height: 2;
+  line-height: 1.5;
   padding: 0 1rem;
   z-index: 1;
   font-size: 1.4rem;
 
   ${mediaQuery('sm')`
     font-size: 2.2rem;
+    line-height: 1.3;
   `};
 `;
 

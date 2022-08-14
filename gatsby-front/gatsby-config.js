@@ -19,6 +19,7 @@ module.exports = {
     author: 'Thomas Guy <twguy.weddev@gmail.com>',
     instagram: 'http://www.instagram.com/charles.penny',
     facebook: 'https://www.facebook.com/charlespennyartist',
+    image: '/artist.png',
   },
   plugins: [
     'gatsby-plugin-robots-txt',

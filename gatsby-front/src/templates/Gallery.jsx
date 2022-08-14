@@ -121,5 +121,7 @@ export const pageQuery = graphql`
 
 export const Head = ({ data }) => {
   const { name: title } = data.title;
-  return <SEO title={title} />;
+  // const arr = data.pics.edges;
+  // const url = arr.length > 0 ? arr[0].image.url : '';
+  return <SEO title={`Charles Penny ${title}`} />;
 };
