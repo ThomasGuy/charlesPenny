@@ -61,7 +61,7 @@ const Home = ({ data }) => {
         title="Charles Penny"
       />
       {bio}
-      {events && events.length > 0 && (
+      {events.length > 0 && (
         <>
           <UpComing>Exhibitions and Events</UpComing>
           <Events events={events} />
