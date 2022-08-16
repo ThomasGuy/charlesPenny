@@ -30,8 +30,8 @@ export default createSchema({
     event,
     address,
     dimensions,
+    contact,
     link,
     social,
-    contact,
   ]),
 });

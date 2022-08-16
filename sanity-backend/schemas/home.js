@@ -39,7 +39,6 @@ export default {
       title: 'Events and Exhibtions',
       name: 'events',
       description: 'Add or remove each event individually',
-      validation: Rule => Rule.required(),
       type: 'array',
       of: [{ type: 'event' }],
     },

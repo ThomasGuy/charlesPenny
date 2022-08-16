@@ -12,16 +12,19 @@ export default {
       title: 'number/name',
       type: 'string',
       description: 'address number/name',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'road',
       title: 'Road',
       type: 'string',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'city',
       title: 'Town/City',
       type: 'string',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'postcode',

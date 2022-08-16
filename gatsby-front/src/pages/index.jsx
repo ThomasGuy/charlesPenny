@@ -74,11 +74,12 @@ const Home = ({ data }) => {
 export default Home;
 
 export const Head = ({ data }) => {
-  // eslint-disable-next-line no-unsafe-optional-chaining
-  const { image } = data.home;
-  const desc =
-    'Charles Penny is well known for his cheerful and sun filled works. He has exhibited widely in the UK, America, Japan and Morocco. His work is in many public and private collections worldwide.';
+  const { image, biography } = data.home;
   return (
-    <SEO title="Charles Penny Gallery" description={desc} imageSrc={image.asset.url} />
+    <SEO
+      title="Charles Penny Gallery"
+      description={biography[0]}
+      imageSrc={image.asset.url}
+    />
   );
 };
