@@ -1,2 +1,2 @@
   [[plugins]]
-  package = "@netlify/plugin-gatsby"
+  package = "@netlify/plugin-gatsby@3.4.8"
