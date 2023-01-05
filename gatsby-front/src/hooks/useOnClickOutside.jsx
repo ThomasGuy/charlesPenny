@@ -30,7 +30,7 @@ function useOnClickOutside(ref, linkref, handler) {
     // ... callback/cleanup to run every render. It's not a big deal ...
     // ... but to optimize you can wrap handler in useCallback before ...
     // ... passing it into this hook.
-    [ref, linkref, handler]
+    [ref, linkref, handler],
   );
 }
 
