@@ -74,7 +74,7 @@ export const Col = styled.div`
       }
     }
     #social {
-      margin-right: 2rem;
+      margin: 1rem;
     }
   }
 `;
